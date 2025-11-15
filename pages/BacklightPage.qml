@@ -8,10 +8,11 @@ import CrossControl 1.0
 import MyQmlModule 1.0
 import "./../components"
 
-Item {
+Rectangle {
     id: backlightID
+    radius: 10
+    color: "#f4f4f4"//"#e9e9e9"
 
-    //color: "white"
 
     function incrementBacklight()
     {
@@ -72,12 +73,13 @@ Item {
 
             anchors {
                 top: parent.top
-                left: parent.left
+                //left: parent.left
+                horizontalCenter: parent.horizontalCenter
                 topMargin: backlightView.height / 32
             }
 
             font {
-                pixelSize: 12
+                pixelSize: 15
             }
 
             text: "SET BACKLIGHT"
@@ -86,9 +88,11 @@ Item {
         Row {
             id: setBacklightRow
 
+
             anchors {
                 top: setBacklightText.bottom
-                left: parent.left
+                //left: parent.left
+                horizontalCenter: parent.horizontalCenter
                 topMargin: -backlightView.height / 62
             }
 
@@ -137,7 +141,8 @@ Item {
         Item {
             anchors {
                 top: setBacklightRow.bottom
-                left: parent.left
+                //left: parent.left
+                horizontalCenter: parent.horizontalCenter
                 topMargin: backlightView.height / 46
             }
 
@@ -148,12 +153,13 @@ Item {
 
                 anchors {
                     top: parent.top
-                    left: parent.left
+                    horizontalCenter: parent.horizontalCenter
+                    //left: parent.left
                     topMargin: backlightView.height / 46
                 }
 
                 font {
-                    pixelSize: 12
+                    pixelSize: 15
                 }
 
                 text: "LIGHT SENSOR"
@@ -164,12 +170,13 @@ Item {
 
                 anchors {
                     top: lightSensorText.bottom
-                    left: parent.left
+                    horizontalCenter: parent.horizontalCenter
+                    //left: parent.left
                     topMargin: -backlightView.height / 26
                 }
 
                 font {
-                    pixelSize: backlightView.height / 4
+                    pixelSize: backlightView.height / 3
                 }
 
                 Connections {
@@ -182,7 +189,7 @@ Item {
 
                 Text {
                     font {
-                        pixelSize: backlightView.height / 32
+                        pixelSize: backlightView.height / 15 >15 ? backlightView.height/15 : 15// valor numerico
                     }
 
                     color: colordef_ccOrange

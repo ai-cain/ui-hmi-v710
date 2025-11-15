@@ -1,16 +1,22 @@
 import QtQuick
 import "./../components"
+import "./../keyboard"
 Rectangle {
-    //width: stackView.width //parent.width
-    //height: stackView.height
-    anchors.fill: stackView
     id: bottomPanel
 
+    anchors.fill: stackItem.parent
+    radius: radiusBox
+    color: "#efefee"
+    MouseArea{
+        anchors.fill: parent
+        onClicked:{
+            console.log(height)
+        }
+    }
 
     Text {
         anchors {
             top: bottomPanel.top
-            //right: bottomPanel.right
             topMargin: 40
             horizontalCenter: bottomPanel.horizontalCenter
         }
@@ -51,4 +57,47 @@ Rectangle {
     }
 
 
+    Rectangle {
+        id:boxxx
+        color: "#134B70"
+        anchors {
+            centerIn: parent
+            margins: 10
+        }
+
+        height: 50
+        width: 200
+        radius: 5
+
+        TextInput {
+            id: textInput
+            anchors {
+                left: parent.left
+                right: parent.right
+                leftMargin: 10
+                verticalCenter: parent.verticalCenter
+            }
+            font.pixelSize: 0.5 * parent.height
+            cursorVisible: true
+        }
+
+        MouseArea {
+            anchors.fill: textInput
+            onClicked: {
+                console.log("El TextInput fue clicado")
+                textInput.focus = true
+
+                // Mostrar el teclado virtual cuando se hace clic
+                keyboardController.show()
+            }
+        }
+    }
+
+    // Declaración del KeyboardController
+    KeyboardController {
+        id: keyboardController
+        target: textInput
+        rootObject: bottomPanel
+        // Puedes añadir más configuraciones si es necesario
+    }
 }

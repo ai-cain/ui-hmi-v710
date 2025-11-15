@@ -10,8 +10,8 @@ import "../components"
 
 Rectangle {
     id: buzzerID
-
-    color: "white"
+    radius: 10
+    color: "#e9e9e9"
 
     function hwButtonUpPressed()
     {

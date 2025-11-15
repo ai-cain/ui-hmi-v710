@@ -1,9 +1,10 @@
 import QtQuick
 
 import "./../pages"
-Item {
-    width: 700//parent.width
-    height: 480//parent.height
+Rectangle {
+    radius: radiusBox
+    //anchors.fill: parent
+    color: "#f4f4f4"
 
     Rectangle{
         width: 100
@@ -11,18 +12,24 @@ Item {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         color: "red"
+        radius: 10
         MouseArea{
             anchors.fill: parent
             onClicked: {
                 Qt.quit();
             }
+            Text {
+                anchors.centerIn: parent
+                text: qsTr("EXIT")
+                color: "white"
+            }
         }
     }
 
-    P_OperacionesSlider{
-        sumWidth: parent.width
-        sumHeight: parent.height
+    Image {
+        width:  parent.width
+        anchors.verticalCenter: parent.verticalCenter
+        source: "qrc:/graphics/under-construction.png"
     }
-
 }
 

@@ -16,11 +16,11 @@ Item {
         left: parent.left
     }
 
-    height: backEnd.currentConfig.headerHeight
-
+    //height: backEnd.currentConfig.headerHeight // se modifico por
+    height: 26 //se debe verificar que hace la funcion de arriba
     Column {
         anchors.fill: parent
-        spacing: 0
+        spacing: 1
 
         Text {
             id: headerTextField
@@ -35,7 +35,7 @@ Item {
             color: colordef_ccDarkGray
 
             font {
-                pixelSize: 24
+                pixelSize: parent.height-2*separatorLine.height - parent.spacing //antes 20
                 family: systemFont
             }
 
@@ -47,14 +47,15 @@ Item {
         {
             id: separatorLine
 
-            width: parent.width
+            width: parent.width/3
 
-            height: 2
+            height: 1
+            color: colordef_ccOrange
 
-            border {
+            /*border {
                 color: colordef_ccOrange
-                width: 2
-            }
+                width: 1
+            }*/
         }
     }
 }

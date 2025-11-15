@@ -53,5 +53,12 @@
         <file>graphics/navigation.svg</file>
         <file>graphics/settings-white.svg</file>
         <file>graphics/settings.svg</file>
+        <file>components/PageTitleControl.qml</file>
+        <file>graphics/under-construction.png</file>
+        <file>pages/MTKTouch.qml</file>
+        <file>pages/MTKOrientation.qml</file>
+        <file>components/DateTimeDialog.qml</file>
+        <file>graphics/camera-outline.svg</file>
+        <file>clock/MTKDateTime.qml</file>
     </qresource>
 </RCC>

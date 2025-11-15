@@ -2,11 +2,12 @@ import QtQuick
 
 import "./../pages"
 Rectangle{
-    width: 700//parent.width
-    height: 480//parent.height
-    color: "blue"
+    radius: radiusBox
+    //anchors.fill: parent
+    color: "#FAFAFA"
 
-    PowerPage
+
+    /*PowerPage
     {
         id: powerPage
         anchors {
@@ -22,5 +23,5 @@ Rectangle{
 
         opacity: visible ? 1.0 : 0.0
         Behavior on opacity { NumberAnimation { easing.type: Easing.InOutQuad; duration: 600 } }
-    }
+    }*/
 }

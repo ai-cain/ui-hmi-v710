@@ -7,7 +7,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.4 COMPONENTS Quick Core REQUIRED)
-find_package(Qt6 REQUIRED COMPONENTS VirtualKeyboard)
+#find_package(Qt6 REQUIRED COMPONENTS VirtualKeyboard)
 
 # Adding Qt runtime path /opt/Qt-6.x/lib to default installation path for CrossControl displays
 # The QT_HOST_PATH is set when cross-compiling, normally /opt/VM/Qt-6.x but not for the VM
@@ -44,6 +44,10 @@ qt_add_qml_module(appDEMO3
     pages/PowerPage.qml
     pages/P_OperacionesSlider.qml
 
+    pages/MTKTouch.qml
+
+    pages/MTKOrientation.qml
+
 
     components/StatusFieldControl.qml
     components/CCIPAddressText.qml
@@ -62,13 +66,25 @@ qt_add_qml_module(appDEMO3
     pages/BuzzerPage.qml
     pages/BacklightPage.qml
     components/PageHeaderControl.qml
+    components/PageTitleControl.qml
     components/CCSlider.qml
     components/CCLedHeader.qml
     components/CCSynth.qml
     components/CCSynthKey.qml
     components/CCCheckBox.qml
     components/CCToggleButton.qml
+    components/DateTimeDialog.qml
     #js/Suma.js
+
+    #-- keyboard --
+    SOURCES keyboard/keyEmitter.h
+    QML_FILES keyboard/Keyboard.qml
+    QML_FILES keyboard/KeyboardController.qml
+    QML_FILES keyboard/CustomButtonKeyboard.qml
+    # -- clock --
+    SOURCES clock/Clock.h
+    SOURCES clock/Clock.cpp
+    QML_FILES clock/MTKDateTime.qml
 
     RESOURCES
     graphics/logo.png
@@ -87,6 +103,7 @@ qt_add_qml_module(appDEMO3
     CCAux/VersionHandler.h          CCAux/VersionHandler.cpp
     CCAux/PowerConfigHandler.h      CCAux/PowerConfigHandler.cpp
 
+
     graphics/alarm.svg
     graphics/alarm-white.svg
     graphics/home.svg
@@ -95,13 +112,16 @@ qt_add_qml_module(appDEMO3
     graphics/navigation-white.svg
     graphics/settings.svg
     graphics/settings-white.svg
+    graphics/camera-outline.svg
+    graphics/under-construction.png
 )
 
 target_link_libraries(appDEMO3
     PRIVATE
     Qt6::Quick
     Qt6::Qml
-    Qt6::VirtualKeyboard)
+    #Qt6::VirtualKeyboard
+)
 
 target_include_directories(appDEMO3 PRIVATE /opt/crosscontrol/include)
 

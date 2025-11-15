@@ -29,7 +29,7 @@ Item {
             width: parent.width - ledIndicator.width
 
             font {
-                pixelSize: parent.width / 5 < 24 ? parent.width / 5 : 24
+                pixelSize: parent.width / 5 < 18 ? parent.width / 5 : 18
             }
 
             verticalAlignment: Text.AlignVCenter

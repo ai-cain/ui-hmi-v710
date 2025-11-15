@@ -10,8 +10,8 @@ import "../components"
 
 Rectangle {
     id: frontLedID
-
-    color: "white"
+    radius: 10
+    color: "#f4f4f4"//"#e9e9e9"
 
     function incrementIndex()
     {
@@ -56,117 +56,122 @@ Rectangle {
             left: parent.left
             right: parent.right
             top: pageHeader.bottom
-            topMargin: 8
+            topMargin: 30
             bottom: parent.bottom
         }
+        Row{
+            spacing: frontLedView.height / 5
+            anchors.horizontalCenter: parent.horizontalCenter
+            Column {
+                id: rgbSlidersColumn
+                spacing: frontLedView.height / 20
+                //
 
-        Column {
-            id: rgbSlidersColumn
-            spacing: frontLedView.height / 20
+                Row {
+                    spacing: 24
 
-            Row {
-                spacing: 24
+                    CCLedHeader {
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: frontLedView.width / 4
 
-                CCLedHeader {
-                    anchors.verticalCenter: parent.verticalCenter
-                    //width: frontLedView.width / 3
+                        ledColor: "red"
+                        label: "Red"
+                    }
 
-                    ledColor: "red"
-                    label: "Red"
+                    CCSlider {
+                        id: redSlider
+
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        minValue: 0
+                        maxValue: 15
+
+                        value: frontLedHandler.currentRedValue
+                        height: frontLedView.height / 10
+                        width: frontLedView.width / 4
+
+                        onCurrentValueChanged: {
+                            frontLedHandler.currentRedValue = newValue;
+                        }
+                    }
                 }
 
-                CCSlider {
-                    id: redSlider
+                Row {
+                    spacing: 24
 
-                    anchors.verticalCenter: parent.verticalCenter
+                    CCLedHeader {
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: frontLedView.width / 4
 
-                    minValue: 0
-                    maxValue: 15
+                        ledColor: "lime"
+                        label: "Green"
+                    }
 
-                    value: frontLedHandler.currentRedValue
-                    height: frontLedView.height / 10
-                    width: frontLedView.width / 5
+                    CCSlider {
+                        id: greenSlider
 
-                    onCurrentValueChanged: {
-                        frontLedHandler.currentRedValue = newValue;
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        minValue: 0
+                        maxValue: 15
+
+                        value: frontLedHandler.currentGreenValue
+                        height: frontLedView.height / 10
+                        width: frontLedView.width / 4
+
+                        onCurrentValueChanged: {
+                            frontLedHandler.currentGreenValue = newValue;
+                        }
+                    }
+                }
+
+
+                Row {
+                    spacing: 24
+
+                    CCLedHeader {
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: frontLedView.width / 4
+
+                        ledColor: "blue"
+                        label: "Blue"
+                    }
+
+                    CCSlider {
+                        id: blueSlider
+
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        minValue: 0
+                        maxValue: 15
+
+                        value: frontLedHandler.currentBlueValue
+                        height: frontLedView.height / 10
+                        width: frontLedView.width / 4
+
+                        onCurrentValueChanged: {
+                            frontLedHandler.currentBlueValue = newValue;
+                        }
                     }
                 }
             }
 
-            Row {
-                spacing: 24
+            Rectangle {
+                id: resultingLed
+                anchors {
+                    //left: rgbSlidersColumn.right
+                    verticalCenter: rgbSlidersColumn.verticalCenter
+                    //leftMargin: 2*rgbSlidersColumn.spacing
 
-                CCLedHeader {
-                    anchors.verticalCenter: parent.verticalCenter
-                    //width: frontLedView.width / 3
-
-                    ledColor: "lime"
-                    label: "Green"
                 }
 
-                CCSlider {
-                    id: greenSlider
+                color: frontLedHandler.currentColorHexCode
 
-                    anchors.verticalCenter: parent.verticalCenter
+                height: rgbSlidersColumn.height * 0.4
+                width: height
 
-                    minValue: 0
-                    maxValue: 15
-
-                    value: frontLedHandler.currentGreenValue
-                    height: frontLedView.height / 10
-                    width: frontLedView.width / 5
-
-                    onCurrentValueChanged: {
-                        frontLedHandler.currentGreenValue = newValue;
-                    }
-                }
+                radius: height / 2
             }
-
-
-            Row {
-                spacing: 24
-
-                CCLedHeader {
-                    anchors.verticalCenter: parent.verticalCenter
-                    //width: frontLedView.width / 3
-
-                    ledColor: "blue"
-                    label: "Blue"
-                }
-
-                CCSlider {
-                    id: blueSlider
-
-                    anchors.verticalCenter: parent.verticalCenter
-
-                    minValue: 0
-                    maxValue: 15
-
-                    value: frontLedHandler.currentBlueValue
-                    height: frontLedView.height / 10
-                    width: frontLedView.width / 5
-
-                    onCurrentValueChanged: {
-                        frontLedHandler.currentBlueValue = newValue;
-                    }
-                }
-            }
-        }
-
-        Rectangle {
-            id: resultingLed
-            anchors {
-                left: rgbSlidersColumn.right
-                verticalCenter: rgbSlidersColumn.verticalCenter
-                leftMargin: rgbSlidersColumn.spacing
-            }
-
-            color: frontLedHandler.currentColorHexCode
-
-            height: rgbSlidersColumn.height * 0.4
-            width: height
-
-            radius: height / 2
         }
 
         // Blur the LED circle to create a shining impression
@@ -177,9 +182,9 @@ Rectangle {
                transparentBorder: true
                radius: 4 * Math.max(frontLedHandler.currentRedValue, frontLedHandler.currentGreenValue, frontLedHandler.currentBlueValue)
            }*/
+    }
 
-        StatusFieldControl {
-            statusText: frontLedHandler.lastError
-        }
+    StatusFieldControl {
+        statusText: frontLedHandler.lastError
     }
 }

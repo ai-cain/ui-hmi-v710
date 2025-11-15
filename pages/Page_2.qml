@@ -1,11 +1,131 @@
 import QtQuick
 import QtQuick.Controls
 
+import "./../clock"
+import "./../components"
 import "./../pages"
+
+
 Rectangle {
-    //width: stackView.width //parent.width
-    //height: stackView.height
-    anchors.fill: stackView
+    anchors.fill: stackItem.parent
+    radius: radiusBox
+    color: "#ececec"
+
+    ListModel {
+        id: pageSubModel
+        ListElement {
+            fileName: "BacklightPage.qml"
+            displayName: "Backlight"
+        }
+        ListElement {
+            fileName: "FrontLedPage.qml"
+            displayName: "FrontLed"
+        }
+        ListElement {
+            fileName: "./../clock/MTKDateTime.qml"
+            displayName: "Date & Time"
+        }
+        ListElement {
+            fileName: "MTKOrientation.qml"
+            displayName: "Orientation"
+        }
+        ListElement {
+            fileName: "MTKTouch.qml"
+            displayName: "Touch"
+        }
+    }
+    Item {
+        id: spacingTitle
+        height: parent.height-containerSubContent.height
+        width: parent.width
+        Text {
+            anchors {
+                top: parent.top
+                topMargin: 40
+                horizontalCenter: parent.horizontalCenter
+            }
+
+            font {
+                pixelSize: 33
+                family: systemFont
+            }
+
+            color: colordef_ccLightGray
+
+            text: "System Setup"
+        }
+    }
+
+    Item {
+        id: containerSubContent
+        height: 5*parent.height/6
+        anchors {
+            left: parent.left
+            right: buttonContainer.left
+            top: spacingTitle.bottom
+        }
+
+        Loader {
+            id: pageLoader
+            width: 7 * parent.width / 8
+            height: 7 * parent.height / 8
+            anchors.centerIn: parent
+
+            source: Qt.resolvedUrl(pageSubModel.get(0).fileName)
+            onLoaded: {
+                if (pageLoader.item !== null) {
+                    pageLoader.item.width = width
+                    pageLoader.item.height = height
+                }
+            }
+        }
+    }
+
+    Item {
+        id: buttonContainer
+        width: 140
+        height: parent.height
+        anchors.right: parent.right
+
+        Column {
+            spacing: 20
+            anchors.centerIn: parent
+            width: parent.width
+
+            Repeater {
+                model: pageSubModel
+                Rectangle {
+                    width: parent.width - 5
+                    height: 50
+                    color: pageLoader.source === Qt.resolvedUrl(
+                               model.fileName) ? colordef_ccOrange : "grey"
+                    radius: 10
+                    anchors.left: parent.left
+
+                    Text {
+                        anchors.centerIn: parent
+                        text: model.displayName
+                        font.family: "URW Gothic L"
+                        font.pixelSize: 16
+                        color: pageLoader.source === Qt.resolvedUrl(
+                                   model.fileName) ? "white": "#efefef"
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            if (pageLoader.source !== Qt.resolvedUrl(
+                                        model.fileName)) {
+                                pageLoader.source = Qt.resolvedUrl(
+                                            model.fileName)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 
     /*BacklightPage
@@ -42,67 +162,3 @@ Rectangle {
         opacity: visible ? 1.0 : 0.0
         Behavior on opacity { NumberAnimation { easing.type: Easing.InOutQuad; duration: 600 } }
     }*/
-
-    StackView {
-          id: stackView
-          anchors.fill: parent
-
-          // Página inicial con un rectángulo vacío
-          Rectangle {
-              width: 360
-              height: 360
-              color: "white"
-          }
-      }
-
-      // Contenedor de botones
-      Item {
-          id: buttonContainer
-          width: 100
-          height: parent.height
-          anchors.right: parent.right
-          anchors.rightMargin: 10
-          anchors.topMargin: 10
-          anchors.bottomMargin: 10
-
-          Column {
-              spacing: 20
-              anchors.centerIn: parent
-
-              Repeater {
-                  model: 2  // Número de páginas (rectángulos)
-                  Rectangle {
-                      width: 130
-                      height: 50
-                      color: "#DDDDDD"
-                      radius: 10
-
-                      Text {
-                          anchors.centerIn: parent
-                          text: "Page " + (index + 1)
-                      }
-
-                      MouseArea {
-                          anchors.fill: parent
-                          onClicked: {
-                              var color;
-                              if (index === 0) {
-                                  color = "lightblue";
-                              } else if (index === 1) {
-                                  color = "lightgreen";
-                              }
-
-                              var newPage = Qt.createQmlObject('import QtQuick 2.15; Rectangle { width: 360; height: 360; color: "' + color + '"; Behavior on y { NumberAnimation { duration: 1000; } } }', stackView);
-                              newPage.y = -newPage.height;  // Empujar el nuevo rectángulo hacia arriba fuera de la vista
-                              stackView.push(newPage);
-                              newPage.y = 0;  // Moverlo a la posición visible
-                          }
-                      }
-                  }
-              }
-          }
-      }
-
-
-
-}

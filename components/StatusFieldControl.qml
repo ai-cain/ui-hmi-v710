@@ -17,7 +17,7 @@ Rectangle {
         bottom: parent.bottom
     }
 
-    height: parent.height / 8
+    height: parent.height / 9
 
     Text {
         anchors {
@@ -29,7 +29,7 @@ Rectangle {
         minimumPixelSize: 8
 
         font {
-            pointSize: 24
+            pointSize: 20
         }
 
         color: "white"

@@ -20,6 +20,8 @@
 #include <QQuickItem>
 #include <QQuickView>
 #include <QtQml>
+#include <QDebug>
+#include <QDateTime>
 
 #include "CCAux/BackLightHandler.h"
 #include "CCAux/BuzzerHandler.h"
@@ -30,17 +32,26 @@
 #include "backend/backend.h"
 #include "others/operacion.h"
 #include "others/suma.h"
+#include "clock/Clock.h"
+
+#include "keyboard/keyEmitter.h"
+
 /******************************************************************************
  * The Main.
 ******************************************************************************/
-
-
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
+    qDebug()<< QDateTime::currentDateTime();
+
     QQmlApplicationEngine engine;
+
+    // instanciamos para la hora el clocl
+    Clock clock;
+    // Set la propiedad
+    engine.rootContext()->setContextProperty("clock", &clock);
 
     qmlRegisterType<suma>("libSuma", 1, 0, "Suma");
     qmlRegisterType<Operacion>("libOperacion", 1, 0, "Operacion");
@@ -81,12 +92,37 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("backEnd", &backEnd);
 
+
+
+    /*time_t initialTime;
+    struct tm * timeinfo;
+    err = Smart_getInitialTime(pSmart, &initialTime);
+    if (ERR_SUCCESS ==err){
+        timeinfo = localtime( &initialTime);
+        std::cout<< asctime(timeinfo)<<endl;
+    }*/
+
     const QUrl url("qrc:/DEMO3/main.qml");
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, &app, [url](QObject *obj, const QUrl &objUrl) {
+    /*QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, &app, [url](QObject *obj, const QUrl &objUrl) {
             if (!obj && url == objUrl)
                 QCoreApplication::exit(-1);
         }, Qt::QueuedConnection);
+    engine.load(url);*/
+    QObject::connect(
+        &engine,
+        &QQmlApplicationEngine::objectCreated,
+        &app,
+        [url](QObject *obj, const QUrl &objUrl) {
+            if (!obj && url == objUrl)
+                QCoreApplication::exit(-1);
+        },
+        Qt::QueuedConnection);
     engine.load(url);
+
+
+    /* Teclado */
+    KeyEmitter keyEmitter;
+    engine.rootContext()->setContextProperty("keyEmitter", &keyEmitter);
 
     return app.exec();
 }
