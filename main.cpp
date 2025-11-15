@@ -1,0 +1,92 @@
+/******************************************************************************
+ *
+ * File:        main.cpp
+ *
+ * Description: This is the main class file where the application main function
+ * is implemented, containing intialization of the application and its handlers.
+ *
+ * Copyright (C) 2020 CrossControl AB
+ * All rights reserved.
+ * Contact: CrossControl AB (info@crosscontrol.com)
+ *
+ * Code Template Revision: 1.2
+ *
+******************************************************************************/
+
+/******************************************************************************
+ * Include Files
+******************************************************************************/
+#include <QGuiApplication>
+#include <QQuickItem>
+#include <QQuickView>
+#include <QtQml>
+
+#include "CCAux/BackLightHandler.h"
+#include "CCAux/BuzzerHandler.h"
+#include "CCAux/FrontLedHandler.h"
+#include "CCAux/PowerConfigHandler.h"
+#include "CCAux/VersionHandler.h"
+#include "backend/appstate.h"
+#include "backend/backend.h"
+#include "others/operacion.h"
+#include "others/suma.h"
+/******************************************************************************
+ * The Main.
+******************************************************************************/
+
+
+
+int main(int argc, char *argv[])
+{
+    QGuiApplication app(argc, argv);
+
+    QQmlApplicationEngine engine;
+
+    qmlRegisterType<suma>("libSuma", 1, 0, "Suma");
+    qmlRegisterType<Operacion>("libOperacion", 1, 0, "Operacion");
+
+    FrontLedHandler frontLedHandler;
+    frontLedHandler.init();
+    qmlRegisterUncreatableType<FrontLedHandler>("CrossControl", 1, 0, "FrontLedHandler", "Don't instance");
+    engine.rootContext()->setContextProperty("frontLedHandler", &frontLedHandler);
+
+    VersionHandler versionHandler;
+    versionHandler.init();
+    qmlRegisterUncreatableType<VersionHandler>("CrossControl", 1, 0, "VersionHandler", "Don't instance");
+    engine.rootContext()->setContextProperty("versionHandler", &versionHandler);
+
+    PowerConfigHandler powerConfigHandler;
+    powerConfigHandler.init();
+    qmlRegisterUncreatableType<PowerConfigHandler>("CrossControl", 1, 0, "PowerConfigHandler", "Don't instance");
+    engine.rootContext()->setContextProperty("powerConfigHandler", &powerConfigHandler);
+
+
+
+    BuzzerHandler buzzerHandler;
+    buzzerHandler.init();
+    qRegisterMetaType<BuzzerHandler::Tone>("BuzzerHandler::Tone");
+    qmlRegisterType<BuzzerHandler>("MyQmlModule", 1, 0, "BuzzerHandler");
+    engine.rootContext()->setContextProperty("buzzerHandler", &buzzerHandler);
+
+
+    BackLightHandler backLightHandler;
+    backLightHandler.init();
+    qmlRegisterUncreatableType<BackLightHandler>("CrossControl", 1, 0, "BackLightHandler", "Don't instance");
+    engine.rootContext()->setContextProperty("backLightHandler", &backLightHandler);
+
+
+    BackEnd backEnd;
+    backEnd.init();
+    qmlRegisterUncreatableType<BackEnd>("CrossControl", 1, 0, "BackEnd", "Don't instance");
+
+    engine.rootContext()->setContextProperty("backEnd", &backEnd);
+
+    const QUrl url("qrc:/DEMO3/main.qml");
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, &app, [url](QObject *obj, const QUrl &objUrl) {
+            if (!obj && url == objUrl)
+                QCoreApplication::exit(-1);
+        }, Qt::QueuedConnection);
+    engine.load(url);
+
+    return app.exec();
+}
