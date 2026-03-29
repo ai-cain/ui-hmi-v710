@@ -16,26 +16,26 @@ Dialog {
     closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
 
     function syncFromClock() {
-        if (!clockRef)
+        if (!dateTimeDialog.clockRef)
             return
 
-        hourBox.value = clockRef.currentHour
-        minuteBox.value = clockRef.currentMinute
-        dayBox.value = clockRef.currentDay
-        monthBox.value = clockRef.currentMonth
-        yearBox.value = clockRef.currentYear
-        errorText = ""
+        hourBox.value = dateTimeDialog.clockRef.currentHour
+        minuteBox.value = dateTimeDialog.clockRef.currentMinute
+        dayBox.value = dateTimeDialog.clockRef.currentDay
+        monthBox.value = dateTimeDialog.clockRef.currentMonth
+        yearBox.value = dateTimeDialog.clockRef.currentYear
+        dateTimeDialog.errorText = ""
     }
 
     function applyChanges() {
-        if (!clockRef)
+        if (!dateTimeDialog.clockRef)
             return
 
-        if (clockRef.setDateTimeParts(yearBox.value, monthBox.value, dayBox.value, hourBox.value, minuteBox.value)) {
-            errorText = ""
-            close()
+        if (dateTimeDialog.clockRef.setDateTimeParts(yearBox.value, monthBox.value, dayBox.value, hourBox.value, minuteBox.value)) {
+            dateTimeDialog.errorText = ""
+            dateTimeDialog.close()
         } else {
-            errorText = "Invalid date."
+            dateTimeDialog.errorText = "Invalid date."
         }
     }
 
@@ -135,8 +135,8 @@ Dialog {
         }
 
         Label {
-            visible: errorText.length > 0
-            text: errorText
+            visible: dateTimeDialog.errorText.length > 0
+            text: dateTimeDialog.errorText
             color: "#c94c2f"
             font.pixelSize: 13
         }

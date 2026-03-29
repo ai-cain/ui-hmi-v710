@@ -8,6 +8,8 @@ Rectangle {
     id: root
     property var clockRef: (typeof clock !== "undefined" && clock !== null) ? clock : null
 
+    width: parent ? parent.width : 0
+    height: parent ? parent.height : 0
     radius: 10
     color: "#f2efe7"
 
@@ -26,7 +28,7 @@ Rectangle {
             horizontalCenter: parent.horizontalCenter
         }
 
-        width: Math.min(parent.width * 0.82, 560)
+        width: Math.min(root.width * 0.82, 560)
         radius: 24
         color: "#fffdf8"
         border.width: 1
@@ -39,8 +41,8 @@ Rectangle {
 
             Rectangle {
                 Layout.alignment: Qt.AlignHCenter
-                width: 88
-                height: 28
+                Layout.preferredWidth: 88
+                Layout.preferredHeight: 28
                 radius: 14
                 color: "#1f1f1f"
 
@@ -60,7 +62,7 @@ Rectangle {
 
             Text {
                 Layout.alignment: Qt.AlignHCenter
-                text: clockRef ? clockRef.currentTime : "--:--"
+                text: root.clockRef ? root.clockRef.currentTime : "--:--"
                 color: "#161616"
                 font.family: "URW Gothic L"
                 font.pixelSize: 88
@@ -69,15 +71,15 @@ Rectangle {
 
             Rectangle {
                 Layout.alignment: Qt.AlignHCenter
-                width: 120
-                height: 2
+                Layout.preferredWidth: 120
+                Layout.preferredHeight: 2
                 radius: 1
                 color: "#d88b43"
             }
 
             Text {
                 Layout.alignment: Qt.AlignHCenter
-                text: clockRef ? clockRef.currentDate : "---"
+                text: root.clockRef ? root.clockRef.currentDate : "---"
                 color: "#5b564f"
                 font.family: "URW Gothic L"
                 font.pixelSize: 24
@@ -104,7 +106,8 @@ Rectangle {
 
     DateTimeDialog {
         id: dateTimeDialog
-        anchors.centerIn: parent
+        x: Math.round((root.width - width) / 2)
+        y: Math.round((root.height - height) / 2)
         clockRef: root.clockRef
     }
 }
