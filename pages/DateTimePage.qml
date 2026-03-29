@@ -96,10 +96,19 @@ Rectangle {
                 Layout.fillHeight: true
             }
 
-            Button {
-                Layout.alignment: Qt.AlignHCenter
-                text: "Edit"
-                onClicked: dateTimeDialog.open()
+            Rectangle {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 72
+                radius: 18
+                color: "#f6f0e6"
+                border.width: 1
+                border.color: "#e4ddd0"
+
+                Button {
+                    anchors.centerIn: parent
+                    text: "Edit"
+                    onClicked: dateTimeDialog.open()
+                }
             }
         }
     }

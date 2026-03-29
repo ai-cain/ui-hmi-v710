@@ -7,28 +7,52 @@ Item {
 
     // reference on the TextInput
     property Item target
-    //Booléan on the state of the keyboard
+    // Boolean on the state of the keyboard
     property bool isKeyboardActive: false
 
     property var rootObject
+    property bool startInSymbols: false
+    property bool fillParent: false
 
-    function show() {
+    function show(targetItem, symbolsMode) {
+        if (targetItem !== undefined && targetItem !== null)
+            keyboard_controller.target = targetItem
 
-        if (!isKeyboardActive && keyboard === null) {
+        if (symbolsMode !== undefined)
+            keyboard_controller.startInSymbols = symbolsMode
+
+        if (!keyboard_controller.target) {
+            console.warn("KeyboardController.show() called without a target")
+            return
+        }
+
+        if (typeof keyboard_controller.target.forceActiveFocus === "function")
+            keyboard_controller.target.forceActiveFocus()
+
+        if (keyboard === null) {
             keyboard = keyboardComponent.createObject(
-                        keyboard_controller.rootObject)
+                        keyboard_controller.rootObject
+                        ? keyboard_controller.rootObject
+                        : keyboard_controller.parent)
+        }
+
+        if (keyboard !== null) {
             keyboard.target = keyboard_controller.target
-            isKeyboardActive = true
-        } else
-            console.info("The keyboard is already shown")
+            keyboard.controller = keyboard_controller
+            keyboard.symbols = keyboard_controller.startInSymbols
+            keyboard.shift = false
+            keyboard.fillParent = keyboard_controller.fillParent
+            keyboard_controller.isKeyboardActive = true
+        }
     }
 
     function hide() {
-        if (isKeyboardActive && keyboard !== null) {
+        if (keyboard !== null) {
             keyboard.destroy()
-            isKeyboardActive = false
-        } else
-            console.info("The keyboard is already hidden")
+            keyboard = null
+        }
+
+        keyboard_controller.isKeyboardActive = false
     }
 
     // private

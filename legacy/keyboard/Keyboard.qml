@@ -4,103 +4,109 @@ import QtQuick
 Rectangle {
     id: root
     property Item target
-    height: 0.4 * parent.height
+    property var controller: null
+    property bool fillParent: false
+
+    height: parent ? (fillParent ? parent.height : 0.4 * parent.height) : 0
     anchors.bottom: parent.bottom
     anchors.left: parent.left
     anchors.right: parent.right
     color: "#9ea3a8"
+    z: 1000
 
     property double rowSpacing: 0.01 * width // horizontal spacing between keyboard
-    property double columnSpacing: 0.02 * height // vertical   spacing between keyboard
-    property bool shift: false //Boolean for the shift state
-    property bool symbols: false //Boolean for the symbol state
+    property double columnSpacing: 0.02 * height // vertical spacing between keyboard
+    property bool shift: false // Boolean for the shift state
+    property bool symbols: false // Boolean for the symbol state
     property double columns: 10 // Number of column
     property double rows: 4 // Number of row
 
-    property string strShift: '\u2191' // UPWARDS ARROW unicode
-    property string strBackspace: '\u2190' // LEFTWARDS ARROW unicode
+    property string strShift: "\u2191" // UPWARDS ARROW unicode
+    property string strBackspace: "\u2190" // LEFTWARDS ARROW unicode
+    property string strEnyeLower: "\u00F1"
+    property string strEnyeUpper: "\u00D1"
 
     property var modelKeyboard: {
         "row_1": [{
-                      "text": 'q',
-                      "symbol": '1',
+                      "text": "q",
+                      "symbol": "1",
                       "width": 1
                   }, {
-                      "text": 'w',
-                      "symbol": '2',
+                      "text": "w",
+                      "symbol": "2",
                       "width": 1
                   }, {
-                      "text": 'e',
-                      "symbol": '3',
+                      "text": "e",
+                      "symbol": "3",
                       "width": 1
                   }, {
-                      "text": 'r',
-                      "symbol": '4',
+                      "text": "r",
+                      "symbol": "4",
                       "width": 1
                   }, {
-                      "text": 't',
-                      "symbol": '5',
+                      "text": "t",
+                      "symbol": "5",
                       "width": 1
                   }, {
-                      "text": 'y',
-                      "symbol": '6',
+                      "text": "y",
+                      "symbol": "6",
                       "width": 1
                   }, {
-                      "text": 'u',
-                      "symbol": '7',
+                      "text": "u",
+                      "symbol": "7",
                       "width": 1
                   }, {
-                      "text": 'i',
-                      "symbol": '8',
+                      "text": "i",
+                      "symbol": "8",
                       "width": 1
                   }, {
-                      "text": 'o',
-                      "symbol": '9',
+                      "text": "o",
+                      "symbol": "9",
                       "width": 1
                   }, {
-                      "text": 'p',
-                      "symbol": '0',
+                      "text": "p",
+                      "symbol": "0",
                       "width": 1
                   }],
         "row_2": [{
-                      "text": 'a',
-                      "symbol": '-',
+                      "text": "a",
+                      "symbol": "-",
                       "width": 1
                   }, {
-                      "text": 's',
-                      "symbol": '/',
+                      "text": "s",
+                      "symbol": "/",
                       "width": 1
                   }, {
-                      "text": 'd',
-                      "symbol": ':',
+                      "text": "d",
+                      "symbol": ":",
                       "width": 1
                   }, {
-                      "text": 'f',
-                      "symbol": ';',
+                      "text": "f",
+                      "symbol": ";",
                       "width": 1
                   }, {
-                      "text": 'g',
-                      "symbol": '(',
+                      "text": "g",
+                      "symbol": "(",
                       "width": 1
                   }, {
-                      "text": 'h',
-                      "symbol": ')',
+                      "text": "h",
+                      "symbol": ")",
                       "width": 1
                   }, {
-                      "text": 'j',
-                      "symbol": '€',
+                      "text": "j",
+                      "symbol": "\u20AC",
                       "width": 1
                   }, {
-                      "text": 'k',
-                      "symbol": '&',
+                      "text": "k",
+                      "symbol": "&",
                       "width": 1
                   }, {
-                      "text": 'l',
-                      "symbol": '@',
+                      "text": "l",
+                      "symbol": "@",
                       "width": 1
                   }, {
-                      "text": 'ñ',
-                      "symbol": '"',
+                      "text": strEnyeLower,
+                      "symbol": "\"",
                       "width": 1
                   }],
         "row_3": [{
@@ -108,27 +114,27 @@ Rectangle {
                       "symbol": strShift,
                       "width": 1.5
                   }, {
-                      "text": 'z',
-                      "symbol": '.',
+                      "text": "z",
+                      "symbol": ".",
                       "width": 1
                   }, {
-                      "text": 'x',
-                      "symbol": ',',
+                      "text": "x",
+                      "symbol": ",",
                       "width": 1
                   }, {
-                      "text": 'c',
-                      "symbol": '?',
+                      "text": "c",
+                      "symbol": "?",
                       "width": 1
                   }, {
-                      "text": 'v',
-                      "symbol": '!',
+                      "text": "v",
+                      "symbol": "!",
                       "width": 1
                   }, {
-                      "text": 'b',
+                      "text": "b",
                       "symbol": "'",
                       "width": 1
                   }, {
-                      "text": 'n',
+                      "text": "n",
                       "symbol": "%",
                       "width": 1
                   }, {
@@ -141,25 +147,25 @@ Rectangle {
                       "width": 1.5
                   }],
         "row_4": [{
-                      "text": '123',
-                      "symbol": 'ABC',
+                      "text": "123",
+                      "symbol": "ABC",
                       "width": 1.5
                   }, {
-                      "text": ' ',
-                      "symbol": ' ',
+                      "text": " ",
+                      "symbol": " ",
                       "width": 6
                   }, {
-                      "text": '.',
-                      "symbol": '.',
+                      "text": ".",
+                      "symbol": ".",
                       "width": 1
                   }, {
-                      "text": 'return',
-                      "symbol": 'return',
+                      "text": "return",
+                      "symbol": "return",
                       "width": 1.5
                   }]
     }
 
-    //Here is the corresponding table between the ascii and the key event
+    // Here is the corresponding table between the ascii and the key event
     property var tableKeyEvent: {
         "_0": Qt.Key_0,
         "_1": Qt.Key_1,
@@ -197,8 +203,6 @@ Rectangle {
         "_x": Qt.Key_X,
         "_y": Qt.Key_Y,
         "_z": Qt.Key_Z,
-        "_←": Qt.Key_Backspace,
-        "_return": Qt.Key_Return,
         "_ ": Qt.Key_Space,
         "_-": Qt.Key_Minus,
         "_/": Qt.Key_Slash,
@@ -206,11 +210,10 @@ Rectangle {
         "_;": Qt.Key_Semicolon,
         "_(": Qt.Key_BracketLeft,
         "_)": Qt.Key_BracketRight,
-        "_€": parseInt("20ac", 16),
-        "_&"// I didn't find the appropriate Qt event so I used the hex format
-        : Qt.Key_Ampersand,
+        "_\u20AC": parseInt("20ac", 16),
+        "_&": Qt.Key_Ampersand,
         "_@": Qt.Key_At,
-        '_"': Qt.Key_QuoteDbl,
+        "_\"": Qt.Key_QuoteDbl,
         "_.": Qt.Key_Period,
         "_,": Qt.Key_Comma,
         "_?": Qt.Key_Question,
@@ -230,7 +233,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 5
 
-        //One column which contains 5 rows
+        // One column which contains 4 rows
         Column {
             spacing: columnSpacing
 
@@ -240,42 +243,38 @@ Rectangle {
                 Repeater {
                     model: modelKeyboard["row_1"]
                     delegate: CustomButtonKeyboard {
-                        text: symbols ? modelData.symbol : shift ? modelData.text.toUpperCase(
-                                                                       ) : modelData.text
-                        buttonWidth: modelData.width * keyboard_container.width
-                                     / columns - rowSpacing
+                        text: symbols ? modelData.symbol : shift ? modelData.text.toUpperCase() : modelData.text
+                        buttonWidth: modelData.width * keyboard_container.width / columns - rowSpacing
                         buttonHeight: keyboard_container.height / rows - columnSpacing
 
                         onClicked: root.clicked(text)
                     }
                 }
             }
+
             Row {
                 id: row_2
                 spacing: rowSpacing
                 Repeater {
                     model: modelKeyboard["row_2"]
                     delegate: CustomButtonKeyboard {
-                        text: symbols ? modelData.symbol : shift ? modelData.text.toUpperCase(
-                                                                       ) : modelData.text
-                        buttonWidth: modelData.width * keyboard_container.width
-                                     / columns - rowSpacing
+                        text: symbols ? modelData.symbol : shift ? modelData.text.toUpperCase() : modelData.text
+                        buttonWidth: modelData.width * keyboard_container.width / columns - rowSpacing
                         buttonHeight: keyboard_container.height / rows - columnSpacing
 
                         onClicked: root.clicked(text)
                     }
                 }
             }
+
             Row {
                 id: row_3
                 spacing: rowSpacing
                 Repeater {
                     model: modelKeyboard["row_3"]
                     delegate: CustomButtonKeyboard {
-                        text: symbols ? modelData.symbol : shift ? modelData.text.toUpperCase(
-                                                                       ) : modelData.text
-                        buttonWidth: modelData.width * keyboard_container.width
-                                     / columns - rowSpacing
+                        text: symbols ? modelData.symbol : shift ? modelData.text.toUpperCase() : modelData.text
+                        buttonWidth: modelData.width * keyboard_container.width / columns - rowSpacing
                         buttonHeight: keyboard_container.height / rows - columnSpacing
                         isShift: shift && text === strShift
 
@@ -283,16 +282,15 @@ Rectangle {
                     }
                 }
             }
+
             Row {
                 id: row_4
                 spacing: rowSpacing
                 Repeater {
                     model: modelKeyboard["row_4"]
                     delegate: CustomButtonKeyboard {
-                        text: symbols ? modelData.symbol : shift ? modelData.text.toUpperCase(
-                                                                       ) : modelData.text
-                        buttonWidth: modelData.width * keyboard_container.width
-                                     / columns - rowSpacing
+                        text: symbols ? modelData.symbol : shift ? modelData.text.toUpperCase() : modelData.text
+                        buttonWidth: modelData.width * keyboard_container.width / columns - rowSpacing
                         buttonHeight: keyboard_container.height / rows - columnSpacing
 
                         onClicked: root.clicked(text)
@@ -306,30 +304,31 @@ Rectangle {
 
     Connections {
         target: root
-        function onClicked(text) {
-            if (text === strShift)
-                shift = !shift // UPWARDS ARROW (shift)
-            else if (text === '123')
-                symbols = true
-            else if (text === 'ABC')
-                symbols = false
-            else if (text === 'ñ') {
-                keyEmitter.keyPressed(textInput, 0x00F1, 'ñ')
-            } else if (text === 'Ñ') {
-                keyEmitter.keyPressed(textInput, 0x00D1, 'Ñ')
-            } else {
-                // insert text
-                if (text === 'return') {
-                    keyboardController.hide()
-                    //accepted(textInput.text) // DOWNWARDS ARROW WITH CORNER LEFTWARDS (enter)
-                    //aqui quiero que al dar click haga la funcion hide o algo similar
-                }
-                //the class keyEmitter is from the C++, check keyEmitter.h
-                keyEmitter.keyPressed(textInput,
-                                      tableKeyEvent['_' + text.toLowerCase()],
-                                      text)
 
-                shift = false // momentary
+        function onClicked(text) {
+            if (!root.target)
+                return
+
+            if (text === strShift) {
+                shift = !shift
+            } else if (text === "123") {
+                symbols = true
+            } else if (text === "ABC") {
+                symbols = false
+            } else if (text === strBackspace) {
+                keyEmitter.keyPressed(root.target, Qt.Key_Backspace, "")
+            } else if (text === strEnyeLower) {
+                keyEmitter.keyPressed(root.target, 0x00F1, strEnyeLower)
+            } else if (text === strEnyeUpper) {
+                keyEmitter.keyPressed(root.target, 0x00D1, strEnyeUpper)
+            } else if (text === "return") {
+                if (root.controller)
+                    root.controller.hide()
+            } else {
+                keyEmitter.keyPressed(root.target,
+                                      tableKeyEvent["_" + text.toLowerCase()],
+                                      text)
+                shift = false
             }
         }
     }
