@@ -35,7 +35,9 @@ ui-hmi-v710/
 ├── components/      Reusable QML building blocks
 ├── components/keyboard/
 ├── graphics/        Icons and image assets
-├── pages/           Top-level and feature pages
+├── pages/
+│   ├── sections/    Menu section containers
+│   └── features/    Feature and placeholder pages
 ├── CMakeLists.txt   Root build definition
 ├── main.cpp         Application bootstrap and context setup
 ├── main.qml         Root window and navigation shell
@@ -81,7 +83,12 @@ Reusable QML controls and shared pieces of UI, including:
 
 ### `pages/`
 
-Feature pages and section containers for the HMI flow, including:
+The QML pages are now split by responsibility:
+
+- `pages/sections/` for top-level menu containers such as setup, diagnostic, connection, and info
+- `pages/features/` for the actual feature screens and shared placeholders
+
+Feature pages include:
 
 - system setup
 - backlight
@@ -191,4 +198,19 @@ This means the repo is now much closer to a single main application instead of a
 
 ## License / Ownership
 
-This repository contains code and structure related to CrossControl-style device workflows. Review your team or client ownership rules before redistributing assets, device integrations, or vendor-specific code.
+This repository contains code and structure related to CrossControl-style device workflows.
+
+No repository-wide open-source license is declared here.
+
+Some files in this repository include third-party copyright notices, and the
+build also links against vendor-provided libraries such as `cc-aux2`. Do not
+assume that the entire repository is covered by LGPL or by any other single
+license just because one shipped dependency may be LGPL-licensed.
+
+For the current project note about `CCAux`, `cc-aux2`, redistribution, and the
+LGPLv2.1 obligations that may apply when shipping that library, see
+`THIRD_PARTY_NOTICES.md`.
+
+If you distribute an LGPL-covered `cc-aux2` build with the app, include a copy
+of the license text from `licenses/LGPL-2.1.txt` and follow the checklist in
+`THIRD_PARTY_NOTICES.md`.

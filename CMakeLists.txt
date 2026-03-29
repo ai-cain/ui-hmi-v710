@@ -38,28 +38,28 @@ qt_add_qml_module(appUiHmiV710
     components/StyledSlider.qml
     components/CapsuleButton.qml
 
-    pages/HomePage.qml
-    pages/SetupPage.qml
-    pages/DiagnosticPage.qml
-    pages/ConnectionPage.qml
-    pages/InfoPage.qml
-    pages/UnderConstructionPage.qml
-    pages/PowerPage.qml
-    pages/DateTimePage.qml
+    pages/sections/HomePage.qml
+    pages/sections/SetupPage.qml
+    pages/sections/DiagnosticPage.qml
+    pages/sections/ConnectionPage.qml
+    pages/sections/InfoPage.qml
+    pages/features/UnderConstructionPage.qml
+    pages/features/PowerPage.qml
+    pages/features/DateTimePage.qml
 
-    pages/TouchPage.qml
+    pages/features/TouchPage.qml
 
-    pages/OrientationPage.qml
+    pages/features/OrientationPage.qml
 
 
     components/StatusFieldControl.qml
     components/CCIPAddressText.qml
 
     components/CCLogo.qml
-    pages/VersionsPage.qml
-    pages/FrontLedPage.qml
-    pages/BuzzerPage.qml
-    pages/BacklightPage.qml
+    pages/features/VersionsPage.qml
+    pages/features/FrontLedPage.qml
+    pages/features/BuzzerPage.qml
+    pages/features/BacklightPage.qml
     components/PageHeaderControl.qml
     components/PageTitleControl.qml
     components/CCSlider.qml

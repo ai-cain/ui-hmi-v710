@@ -1,12 +1,12 @@
 <RCC>
     <qresource prefix="/">
         <file>graphics/logo.png</file>
-        <file>pages/BacklightPage.qml</file>
-        <file>pages/BuzzerPage.qml</file>
-        <file>pages/FrontLedPage.qml</file>
-        <file>pages/PowerPage.qml</file>
-        <file>pages/VersionsPage.qml</file>
-        <file>pages/DateTimePage.qml</file>
+        <file>pages/features/BacklightPage.qml</file>
+        <file>pages/features/BuzzerPage.qml</file>
+        <file>pages/features/FrontLedPage.qml</file>
+        <file>pages/features/PowerPage.qml</file>
+        <file>pages/features/VersionsPage.qml</file>
+        <file>pages/features/DateTimePage.qml</file>
         <file>components/StyledSlider.qml</file>
         <file>components/CapsuleButton.qml</file>
         <file>components/CCCheckBox.qml</file>
@@ -19,11 +19,11 @@
         <file>components/CCToggleButton.qml</file>
         <file>components/PageHeaderControl.qml</file>
         <file>components/StatusFieldControl.qml</file>
-        <file>pages/InfoPage.qml</file>
-        <file>pages/ConnectionPage.qml</file>
-        <file>pages/HomePage.qml</file>
-        <file>pages/SetupPage.qml</file>
-        <file>pages/DiagnosticPage.qml</file>
+        <file>pages/sections/InfoPage.qml</file>
+        <file>pages/sections/ConnectionPage.qml</file>
+        <file>pages/sections/HomePage.qml</file>
+        <file>pages/sections/SetupPage.qml</file>
+        <file>pages/sections/DiagnosticPage.qml</file>
         <file>graphics/alarm-white.svg</file>
         <file>graphics/alarm.svg</file>
         <file>graphics/diagnostic-white.svg</file>
@@ -38,10 +38,10 @@
         <file>graphics/settings.svg</file>
         <file>components/PageTitleControl.qml</file>
         <file>graphics/under-construction.png</file>
-        <file>pages/TouchPage.qml</file>
-        <file>pages/OrientationPage.qml</file>
+        <file>pages/features/TouchPage.qml</file>
+        <file>pages/features/OrientationPage.qml</file>
         <file>components/DateTimeDialog.qml</file>
         <file>graphics/camera-outline.svg</file>
-        <file>pages/UnderConstructionPage.qml</file>
+        <file>pages/features/UnderConstructionPage.qml</file>
     </qresource>
 </RCC>

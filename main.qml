@@ -11,7 +11,6 @@ import QtQuick.Window 2.15
 import QtQuick.Layouts 1.3
 import QtQuick.Particles 2.0
 import Qt.labs.folderlistmodel
-import "./pages"
 import "./components"
 
 ApplicationWindow {
@@ -59,28 +58,28 @@ ApplicationWindow {
             id: itemModel
             ListElement {
                 title: "Setup"
-                page: "pages/SetupPage.qml"
+                page: "pages/sections/SetupPage.qml"
                 icon: "qrc:/graphics/settings.svg"
                 activeIcon: "qrc:/graphics/settings-white.svg"
                 color: "#ffa117" //"#f44336"
             }
             ListElement {
                 title: "Diagnostic"
-                page: "pages/DiagnosticPage.qml"
+                page: "pages/sections/DiagnosticPage.qml"
                 icon: "qrc:/graphics/diagnostic.svg"
                 activeIcon: "qrc:/graphics/diagnostic-white.svg"
                 color: "#ffa117"
             }
             ListElement {
                 title: "Connection"
-                page: "pages/ConnectionPage.qml"
+                page: "pages/sections/ConnectionPage.qml"
                 icon: "qrc:/graphics/navigation.svg"
                 activeIcon: "qrc:/graphics/navigation-white.svg"
                 color: "#ffa117" //"#0fc70f"
             }
             ListElement {
                 title: "Info"
-                page: "pages/InfoPage.qml"
+                page: "pages/sections/InfoPage.qml"
                 icon: "qrc:/graphics/info.svg"
                 activeIcon: "qrc:/graphics/info-white.svg"
                 color: "#ffa117" //"#2196f3"
@@ -112,7 +111,7 @@ ApplicationWindow {
                         numberPage = 0
                         stackView.replace(Qt.resolvedUrl(currentPage))
                     } else {
-                        stackView.replace(Qt.resolvedUrl("pages/HomePage.qml"))
+                        stackView.replace(Qt.resolvedUrl("pages/sections/HomePage.qml"))
                     }
                 }
             }
