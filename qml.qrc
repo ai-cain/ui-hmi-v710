@@ -21,6 +21,7 @@
         <file>pages/MainMenuPage.qml</file>
         <file>pages/PowerPage.qml</file>
         <file>pages/VersionsPage.qml</file>
+        <file>pages/DateTimePage.qml</file>
         <file>components/Mtk_Slider.qml</file>
         <file>pages/P_OperacionesSlider.qml</file>
         <file>components/Mtk_Button.qml</file>
@@ -57,6 +58,5 @@
         <file>pages/MTKOrientation.qml</file>
         <file>components/DateTimeDialog.qml</file>
         <file>graphics/camera-outline.svg</file>
-        <file>legacy/clock/MTKDateTime.qml</file>
     </qresource>
 </RCC>

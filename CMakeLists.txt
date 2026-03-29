@@ -47,6 +47,7 @@ qt_add_qml_module(appUiHmiV710
     pages/Page_7.qml
     pages/PowerPage.qml
     pages/P_OperacionesSlider.qml
+    pages/DateTimePage.qml
 
     pages/MTKTouch.qml
 
@@ -88,7 +89,6 @@ qt_add_qml_module(appUiHmiV710
     # -- clock --
     SOURCES legacy/clock/Clock.h
     SOURCES legacy/clock/Clock.cpp
-    QML_FILES legacy/clock/MTKDateTime.qml
 
     RESOURCES
     graphics/logo.png

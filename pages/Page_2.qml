@@ -1,7 +1,6 @@
 import QtQuick
 import QtQuick.Controls
 
-import "./../legacy/clock"
 import "./../components"
 import "./../pages"
 
@@ -22,7 +21,7 @@ Rectangle {
             displayName: "FrontLed"
         }
         ListElement {
-            fileName: "./../legacy/clock/MTKDateTime.qml"
+            fileName: "DateTimePage.qml"
             displayName: "Date & Time"
         }
         ListElement {

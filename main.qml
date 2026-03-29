@@ -37,7 +37,7 @@ ApplicationWindow {
     property real numTotalButton: 5
     property real numContenButton: 4
     property real hTotalButton: 480
-    property string currentPage: ""
+    property string currentPage: itemModel.count > 0 ? itemModel.get(0).page : ""
     property int numberPage: 0
 
     // propiedades importantes utilizadas
@@ -102,7 +102,15 @@ ApplicationWindow {
                 id: stackView
                 anchors.fill: parent
                 z: parent.z + 1
-                initialItem: Qt.resolvedUrl("pages/Page_1.qml")
+                Component.onCompleted: {
+                    if (itemModel.count > 0) {
+                        currentPage = itemModel.get(0).page
+                        numberPage = 0
+                        stackView.replace(Qt.resolvedUrl(currentPage))
+                    } else {
+                        stackView.replace(Qt.resolvedUrl("pages/Page_1.qml"))
+                    }
+                }
             }
         }
         // area total del menu
