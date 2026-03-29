@@ -35,8 +35,8 @@ qt_add_qml_module(appUiHmiV710
 
     QML_FILES
     main.qml
-    components/Mtk_Slider.qml
-    components/Mtk_Button.qml
+    components/StyledSlider.qml
+    components/CapsuleButton.qml
 
     pages/Page_1.qml
     pages/Page_2.qml
@@ -47,9 +47,9 @@ qt_add_qml_module(appUiHmiV710
     pages/PowerPage.qml
     pages/DateTimePage.qml
 
-    pages/MTKTouch.qml
+    pages/TouchPage.qml
 
-    pages/MTKOrientation.qml
+    pages/OrientationPage.qml
 
 
     components/StatusFieldControl.qml

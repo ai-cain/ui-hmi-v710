@@ -26,11 +26,11 @@ Rectangle {
             displayName: "Date & Time"
         }
         ListElement {
-            fileName: "MTKOrientation.qml"
+            fileName: "OrientationPage.qml"
             displayName: "Orientation"
         }
         ListElement {
-            fileName: "MTKTouch.qml"
+            fileName: "TouchPage.qml"
             displayName: "Touch"
         }
     }

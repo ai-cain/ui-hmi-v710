@@ -7,8 +7,8 @@
         <file>pages/PowerPage.qml</file>
         <file>pages/VersionsPage.qml</file>
         <file>pages/DateTimePage.qml</file>
-        <file>components/Mtk_Slider.qml</file>
-        <file>components/Mtk_Button.qml</file>
+        <file>components/StyledSlider.qml</file>
+        <file>components/CapsuleButton.qml</file>
         <file>components/CCCheckBox.qml</file>
         <file>components/CCIPAddressText.qml</file>
         <file>components/CCLedHeader.qml</file>
@@ -34,8 +34,8 @@
         <file>graphics/settings.svg</file>
         <file>components/PageTitleControl.qml</file>
         <file>graphics/under-construction.png</file>
-        <file>pages/MTKTouch.qml</file>
-        <file>pages/MTKOrientation.qml</file>
+        <file>pages/TouchPage.qml</file>
+        <file>pages/OrientationPage.qml</file>
         <file>components/DateTimeDialog.qml</file>
         <file>graphics/camera-outline.svg</file>
     </qresource>
