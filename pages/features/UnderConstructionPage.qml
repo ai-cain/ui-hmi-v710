@@ -1,6 +1,4 @@
 import QtQuick
-
-import "./../pages"
 Rectangle {
     radius: radiusBox
     //anchors.fill: parent

@@ -1,9 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 
-import "./../components"
-import "./../pages"
-
+import "../../components"
 
 Rectangle {
     width: parent ? parent.width : 0
@@ -14,24 +12,12 @@ Rectangle {
     ListModel {
         id: pageSubModel
         ListElement {
-            fileName: "BacklightPage.qml"
-            displayName: "Backlight"
+            fileName: "../features/UnderConstructionPage.qml"
+            displayName: "CCAux"
         }
         ListElement {
-            fileName: "FrontLedPage.qml"
-            displayName: "FrontLed"
-        }
-        ListElement {
-            fileName: "DateTimePage.qml"
-            displayName: "Date & Time"
-        }
-        ListElement {
-            fileName: "OrientationPage.qml"
-            displayName: "Orientation"
-        }
-        ListElement {
-            fileName: "TouchPage.qml"
-            displayName: "Touch"
+            fileName: "../features/VersionsPage.qml"
+            displayName: "Version"
         }
     }
     Item {
@@ -52,7 +38,7 @@ Rectangle {
 
             color: colordef_ccLightGray
 
-            text: "System Setup"
+            text: "Device Info"
         }
     }
 
@@ -162,3 +148,22 @@ Rectangle {
         opacity: visible ? 1.0 : 0.0
         Behavior on opacity { NumberAnimation { easing.type: Easing.InOutQuad; duration: 600 } }
     }*/
+
+
+/* VersionsPage
+ {
+     id: versionsPage
+     anchors {
+         top: parent.top
+         left: parent.left
+         bottom: parent.bottom
+         bottomMargin: 4
+     }
+
+     width: parent.width  //navigationBar.isShowing ? parent.width - navigationBar.width : parent.width
+
+     visible: true//false
+
+     opacity: visible ? 1.0 : 0.0
+     Behavior on opacity { NumberAnimation { easing.type: Easing.InOutQuad; duration: 600 } }
+ }*/

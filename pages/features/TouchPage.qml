@@ -1,7 +1,5 @@
 import QtQuick
 
-import "./../pages"
-
 Rectangle {
     width: parent.width;
     height: parent.height;

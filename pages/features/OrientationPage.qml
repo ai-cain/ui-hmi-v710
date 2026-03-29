@@ -1,6 +1,6 @@
 import QtQuick
 
-import "./../components"
+import "../../components"
 
 Rectangle {
     id: boxOrientation

@@ -1,6 +1,6 @@
 import QtQuick
-import "./../components"
-import "./../components/keyboard"
+import "../../components"
+import "../../components/keyboard"
 Rectangle {
     id: bottomPanel
     property var backendRef: (typeof backEnd !== "undefined" && backEnd !== null) ? backEnd : null

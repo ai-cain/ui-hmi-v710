@@ -1,8 +1,8 @@
 import QtQuick
 import QtQuick.Controls
 
-import "./../components"
-import "./../pages"
+import "../../components"
+
 
 Rectangle {
     width: parent ? parent.width : 0
@@ -13,20 +13,24 @@ Rectangle {
     ListModel {
         id: pageSubModel
         ListElement {
-            fileName: "UnderConstructionPage.qml" //"BuzzerPage.qml"
-            displayName: "Buzzer"
+            fileName: "../features/BacklightPage.qml"
+            displayName: "Backlight"
         }
         ListElement {
-            fileName: "UnderConstructionPage.qml"
-            displayName: "CAN"
+            fileName: "../features/FrontLedPage.qml"
+            displayName: "FrontLed"
         }
         ListElement {
-            fileName: "UnderConstructionPage.qml"
-            displayName: "Camera"
+            fileName: "../features/DateTimePage.qml"
+            displayName: "Date & Time"
         }
         ListElement {
-            fileName: "UnderConstructionPage.qml"
-            displayName: "Keyboard"
+            fileName: "../features/OrientationPage.qml"
+            displayName: "Orientation"
+        }
+        ListElement {
+            fileName: "../features/TouchPage.qml"
+            displayName: "Touch"
         }
     }
     Item {
@@ -47,7 +51,7 @@ Rectangle {
 
             color: colordef_ccLightGray
 
-            text: "Device Diagnostic"
+            text: "System Setup"
         }
     }
 
@@ -157,21 +161,3 @@ Rectangle {
         opacity: visible ? 1.0 : 0.0
         Behavior on opacity { NumberAnimation { easing.type: Easing.InOutQuad; duration: 600 } }
     }*/
-
-/*BuzzerPage
-    {
-        id: buzzerPage
-        anchors {
-            top: parent.top
-            left: parent.left
-            bottom: parent.bottom
-            bottomMargin: 4
-        }
-
-        width: parent.width  //navigationBar.isShowing ? parent.width - navigationBar.width : parent.width
-
-        visible: true//false
-        opacity: visible ? 1.0 : 0.0
-        Behavior on opacity { NumberAnimation { easing.type: Easing.InOutQuad; duration: 600 } }
-    }*/
-

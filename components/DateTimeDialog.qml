@@ -10,8 +10,8 @@ Dialog {
     property string errorText: ""
 
     title: "Edit Date & Time"
-    width: 420
-    padding: 24
+    width: 360
+    padding: 18
     modal: true
     focus: true
     standardButtons: Dialog.NoButton
@@ -80,7 +80,7 @@ Dialog {
     }
 
     contentItem: ColumnLayout {
-        spacing: 18
+        spacing: 14
 
         Label {
             text: "Adjust the app clock"
@@ -99,15 +99,15 @@ Dialog {
             }
 
             RowLayout {
-                spacing: 10
+                spacing: 8
 
                 TextField {
                     id: hourField
                     Layout.fillWidth: true
-                    Layout.preferredWidth: 110
+                    Layout.preferredWidth: 96
                     maximumLength: 2
                     horizontalAlignment: TextInput.AlignHCenter
-                    font.pixelSize: 22
+                    font.pixelSize: 20
                     inputMethodHints: Qt.ImhDigitsOnly | Qt.ImhNoPredictiveText
                     validator: IntValidator {
                         bottom: 0
@@ -137,10 +137,10 @@ Dialog {
                 TextField {
                     id: minuteField
                     Layout.fillWidth: true
-                    Layout.preferredWidth: 110
+                    Layout.preferredWidth: 96
                     maximumLength: 2
                     horizontalAlignment: TextInput.AlignHCenter
-                    font.pixelSize: 22
+                    font.pixelSize: 20
                     inputMethodHints: Qt.ImhDigitsOnly | Qt.ImhNoPredictiveText
                     validator: IntValidator {
                         bottom: 0
@@ -173,15 +173,15 @@ Dialog {
             }
 
             RowLayout {
-                spacing: 10
+                spacing: 8
 
                 TextField {
                     id: dayField
                     Layout.fillWidth: true
-                    Layout.preferredWidth: 100
+                    Layout.preferredWidth: 78
                     maximumLength: 2
                     horizontalAlignment: TextInput.AlignHCenter
-                    font.pixelSize: 22
+                    font.pixelSize: 20
                     inputMethodHints: Qt.ImhDigitsOnly | Qt.ImhNoPredictiveText
                     validator: IntValidator {
                         bottom: 1
@@ -204,10 +204,10 @@ Dialog {
                 TextField {
                     id: monthField
                     Layout.fillWidth: true
-                    Layout.preferredWidth: 100
+                    Layout.preferredWidth: 78
                     maximumLength: 2
                     horizontalAlignment: TextInput.AlignHCenter
-                    font.pixelSize: 22
+                    font.pixelSize: 20
                     inputMethodHints: Qt.ImhDigitsOnly | Qt.ImhNoPredictiveText
                     validator: IntValidator {
                         bottom: 1
@@ -230,10 +230,10 @@ Dialog {
                 TextField {
                     id: yearField
                     Layout.fillWidth: true
-                    Layout.preferredWidth: 140
+                    Layout.preferredWidth: 110
                     maximumLength: 4
                     horizontalAlignment: TextInput.AlignHCenter
-                    font.pixelSize: 22
+                    font.pixelSize: 20
                     inputMethodHints: Qt.ImhDigitsOnly | Qt.ImhNoPredictiveText
                     validator: IntValidator {
                         bottom: 2020
@@ -265,7 +265,7 @@ Dialog {
         Item {
             id: keyboardHost
             Layout.fillWidth: true
-            Layout.preferredHeight: dateKeyboard.isKeyboardActive ? 160 : 0
+            Layout.preferredHeight: dateKeyboard.isKeyboardActive ? 136 : 0
             clip: true
         }
     }

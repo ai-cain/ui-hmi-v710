@@ -2,8 +2,7 @@
 import QtQuick
 import QtQuick.Controls
 
-import "./../components"
-import "./../pages"
+import "../../components"
 
 Rectangle {
     width: parent ? parent.width : 0
@@ -14,19 +13,19 @@ Rectangle {
     ListModel {
         id: pageSubModel
         ListElement {
-            fileName: "UnderConstructionPage.qml"
+            fileName: "../features/UnderConstructionPage.qml"
             displayName: "Wi-fi"
         }
         ListElement {
-            fileName: "UnderConstructionPage.qml"
+            fileName: "../features/UnderConstructionPage.qml"
             displayName: "Bluetooth"
         }
         ListElement {
-            fileName: "UnderConstructionPage.qml"
+            fileName: "../features/UnderConstructionPage.qml"
             displayName: "IP"
         }
         ListElement {
-            fileName: "UnderConstructionPage.qml"
+            fileName: "../features/UnderConstructionPage.qml"
             displayName: "USB"
         }
     }

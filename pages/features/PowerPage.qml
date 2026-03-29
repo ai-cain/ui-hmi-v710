@@ -6,7 +6,7 @@ import QtQuick 2.6
 //import QtGraphicalEffects 1.0
 import CrossControl 1.0
 import MyQmlModule 1.0
-import "../components"
+import "../../components"
 
 Rectangle {
     id: powerID
