@@ -1,13 +1,13 @@
 import QtQuick
 import QtQuick.Controls
 
-import "./../clock"
+import "./../legacy/clock"
 import "./../components"
 import "./../pages"
 
 
 Rectangle {
-    anchors.fill: stackItem.parent
+    anchors.fill: parent
     radius: radiusBox
     color: "#ececec"
 
@@ -22,7 +22,7 @@ Rectangle {
             displayName: "FrontLed"
         }
         ListElement {
-            fileName: "./../clock/MTKDateTime.qml"
+            fileName: "./../legacy/clock/MTKDateTime.qml"
             displayName: "Date & Time"
         }
         ListElement {

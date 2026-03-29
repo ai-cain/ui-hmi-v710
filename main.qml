@@ -102,18 +102,7 @@ ApplicationWindow {
                 id: stackView
                 anchors.fill: parent
                 z: parent.z + 1
-
-                Component.onCompleted: {
-
-                    var component = Qt.createComponent("pages/Page_1.qml")
-
-                    if (component.status === Component.Ready) {
-                        var page = component.createObject(stackView)
-                        stackView.push(page)
-                    } else {
-                        console.log("Error loading :", component.errorString())
-                    }
-                }
+                initialItem: Qt.resolvedUrl("pages/Page_1.qml")
             }
         }
         // area total del menu
@@ -396,15 +385,10 @@ ApplicationWindow {
                                 anchors.fill: parent
                                 onClicked: {
                                     if (currentPage !== model.page) {
-                                        var component = Qt.createComponent(model.page)
-                                        if (component.status === Component.Ready) {
-                                            stackView.push(component.createObject(stackView))
-                                            currentPage = model.page
-                                            numberPage = model.index
-                                            console.log("Carga qml  ok:", currentPage, height) //console.log(numberPage, model.color)
-                                        } else {
-                                            console.log("Error loading :", component.errorString())
-                                        }
+                                        stackView.replace(Qt.resolvedUrl(model.page))
+                                        currentPage = model.page
+                                        numberPage = model.index
+                                        console.log("Carga qml ok:", currentPage)
                                     }
                                 }
                             }

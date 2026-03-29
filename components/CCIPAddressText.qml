@@ -6,8 +6,9 @@ import QtQuick 2.6
 
 Item {
     id: base
+    property var backendRef: (typeof backEnd !== "undefined" && backEnd !== null) ? backEnd : null
 
-    property bool hasSecondIpAddress: backEnd.ipAddress2 !== ""
+    property bool hasSecondIpAddress: backendRef && backendRef.ipAddress2 !== ""
 
     Text {
         anchors {
@@ -32,6 +33,6 @@ Item {
         minimumPixelSize: 9
         fontSizeMode: Text.HorizontalFit
 
-        text: base.hasSecondIpAddress ? backEnd.ipAddress1 + "\n" + backEnd.ipAddress2 : backEnd.ipAddress1
+        text: !backendRef ? "-" : base.hasSecondIpAddress ? backendRef.ipAddress1 + "\n" + backendRef.ipAddress2 : backendRef.ipAddress1
     }
 }

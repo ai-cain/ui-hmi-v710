@@ -1,7 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 
-import "./../components"
+import "./../../components"
 
 Rectangle {
     width: parent.width
@@ -46,12 +46,16 @@ Rectangle {
 
     Connections {
         target: clock
-        onTimeChanged: timeText.text = clock.currentTime
+        function onTimeChanged() {
+            timeText.text = clock.currentTime
+        }
     }
 
     Connections {
         target: clock
-        onDateChanged: dateText.text = clock.currentDate
+        function onDateChanged() {
+            dateText.text = clock.currentDate
+        }
     }
 }
 

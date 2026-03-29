@@ -32,9 +32,9 @@
 #include "backend/backend.h"
 #include "others/operacion.h"
 #include "others/suma.h"
-#include "clock/Clock.h"
+#include "legacy/clock/Clock.h"
 
-#include "keyboard/keyEmitter.h"
+#include "legacy/keyboard/keyEmitter.h"
 
 /******************************************************************************
  * The Main.
@@ -47,11 +47,15 @@ int main(int argc, char *argv[])
     qDebug()<< QDateTime::currentDateTime();
 
     QQmlApplicationEngine engine;
+    KeyEmitter keyEmitter;
+
+    MyAppState::init();
 
     // instanciamos para la hora el clocl
     Clock clock;
     // Set la propiedad
     engine.rootContext()->setContextProperty("clock", &clock);
+    engine.rootContext()->setContextProperty("keyEmitter", &keyEmitter);
 
     qmlRegisterType<suma>("libSuma", 1, 0, "Suma");
     qmlRegisterType<Operacion>("libOperacion", 1, 0, "Operacion");
@@ -102,7 +106,7 @@ int main(int argc, char *argv[])
         std::cout<< asctime(timeinfo)<<endl;
     }*/
 
-    const QUrl url("qrc:/DEMO3/main.qml");
+    const QUrl url("qrc:/UiHmiV710/main.qml");
     /*QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, &app, [url](QObject *obj, const QUrl &objUrl) {
             if (!obj && url == objUrl)
                 QCoreApplication::exit(-1);
@@ -119,10 +123,6 @@ int main(int argc, char *argv[])
         Qt::QueuedConnection);
     engine.load(url);
 
-
-    /* Teclado */
-    KeyEmitter keyEmitter;
-    engine.rootContext()->setContextProperty("keyEmitter", &keyEmitter);
 
     return app.exec();
 }

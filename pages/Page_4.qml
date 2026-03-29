@@ -6,7 +6,7 @@ import "./../components"
 import "./../pages"
 
 Rectangle {
-    anchors.fill: stackItem.parent
+    anchors.fill: parent
     radius: radiusBox
     color: "#ececec"
 

@@ -10,36 +10,43 @@ import "../components"
 
 Rectangle {
     id: frontLedID
+    property var ledHandler: (typeof frontLedHandler !== "undefined" && frontLedHandler !== null) ? frontLedHandler : null
+    property var backendRef: (typeof backEnd !== "undefined" && backEnd !== null) ? backEnd : null
     radius: 10
     color: "#f4f4f4"//"#e9e9e9"
 
     function incrementIndex()
     {
-        var value = frontLedHandler.currentBlueValue;
+        if (!ledHandler)
+            return;
+        var value = ledHandler.currentBlueValue;
         value++;
         if (value > 15)
         {
             value = 15;
         }
 
-        frontLedHandler.currentBlueValue = value;
+        ledHandler.currentBlueValue = value;
     }
 
     function decrementIndex()
     {
-        var value = frontLedHandler.currentBlueValue;
+        if (!ledHandler)
+            return;
+        var value = ledHandler.currentBlueValue;
         value--;
         if (value < 0)
         {
             value = 0;
         }
 
-        frontLedHandler.currentBlueValue = value;
+        ledHandler.currentBlueValue = value;
     }
 
     function goBackToMain() {
         // View default page
-        backEnd.setState(MyAppState.MAIN)
+        if (backendRef)
+            backendRef.setState(MyAppState.MAIN)
         frontLedPage.visible = false
         navigationBar.hideEnter = false
     }
@@ -86,12 +93,13 @@ Rectangle {
                         minValue: 0
                         maxValue: 15
 
-                        value: frontLedHandler.currentRedValue
+                        value: ledHandler ? ledHandler.currentRedValue : minValue
                         height: frontLedView.height / 10
                         width: frontLedView.width / 4
 
-                        onCurrentValueChanged: {
-                            frontLedHandler.currentRedValue = newValue;
+                        onCurrentValueChanged: function(newValue) {
+                            if (ledHandler)
+                                ledHandler.currentRedValue = newValue;
                         }
                     }
                 }
@@ -115,12 +123,13 @@ Rectangle {
                         minValue: 0
                         maxValue: 15
 
-                        value: frontLedHandler.currentGreenValue
+                        value: ledHandler ? ledHandler.currentGreenValue : minValue
                         height: frontLedView.height / 10
                         width: frontLedView.width / 4
 
-                        onCurrentValueChanged: {
-                            frontLedHandler.currentGreenValue = newValue;
+                        onCurrentValueChanged: function(newValue) {
+                            if (ledHandler)
+                                ledHandler.currentGreenValue = newValue;
                         }
                     }
                 }
@@ -145,12 +154,13 @@ Rectangle {
                         minValue: 0
                         maxValue: 15
 
-                        value: frontLedHandler.currentBlueValue
+                        value: ledHandler ? ledHandler.currentBlueValue : minValue
                         height: frontLedView.height / 10
                         width: frontLedView.width / 4
 
-                        onCurrentValueChanged: {
-                            frontLedHandler.currentBlueValue = newValue;
+                        onCurrentValueChanged: function(newValue) {
+                            if (ledHandler)
+                                ledHandler.currentBlueValue = newValue;
                         }
                     }
                 }
@@ -165,7 +175,7 @@ Rectangle {
 
                 }
 
-                color: frontLedHandler.currentColorHexCode
+                color: ledHandler ? ledHandler.currentColorHexCode : "transparent"
 
                 height: rgbSlidersColumn.height * 0.4
                 width: height
@@ -185,6 +195,6 @@ Rectangle {
     }
 
     StatusFieldControl {
-        statusText: frontLedHandler.lastError
+        statusText: ledHandler ? ledHandler.lastError : "Unavailable"
     }
 }

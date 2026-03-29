@@ -10,6 +10,8 @@ import "../components"
 
 Rectangle {
     id: powerID
+    property var powerHandler: (typeof powerConfigHandler !== "undefined" && powerConfigHandler !== null) ? powerConfigHandler : null
+    property var backendRef: (typeof backEnd !== "undefined" && backEnd !== null) ? backEnd : null
 
     color: "white"
 
@@ -39,7 +41,8 @@ Rectangle {
 
     function goBackToMain() {
         // View default page
-        backEnd.setState(MyAppState.MAIN)
+        if (backendRef)
+            backendRef.setState(MyAppState.MAIN)
         powerPage.visible = false
         navigationBar.hideEnter = false
     }
@@ -88,7 +91,7 @@ Rectangle {
                 CCToggleButton {
                     id: startupTriggerConfigToggler
 
-                    currentString: powerConfigHandler.startupTriggerConfig;
+                    currentString: powerHandler ? powerHandler.startupTriggerConfig : "";
 
                     width: 300
                     height: 50
@@ -96,7 +99,8 @@ Rectangle {
                     elements: ["FRONT BUTTON", "ON/OFF SIGNAL", "BOTH BUTTON AND SIGNAL"]
 
                     onClicked: {
-                        powerConfigHandler.startupTriggerConfig = startupTriggerConfigToggler.currentString;
+                        if (powerHandler)
+                            powerHandler.startupTriggerConfig = startupTriggerConfigToggler.currentString;
                     }
                 }
             }
@@ -119,7 +123,7 @@ Rectangle {
                 CCToggleButton {
                     id: extOnOffSigTrigTimeToggler
 
-                    currentString: powerConfigHandler.extOnOffSigTrigTime;
+                    currentString: powerHandler ? powerHandler.extOnOffSigTrigTime : "";
 
                     width: 300
                     height: 50
@@ -127,7 +131,8 @@ Rectangle {
                     elements: ["1", "5", "10", "20"]
 
                     onClicked: {
-                        powerConfigHandler.extOnOffSigTrigTime = parseInt(extOnOffSigTrigTimeToggler.currentString, 10);
+                        if (powerHandler)
+                            powerHandler.extOnOffSigTrigTime = parseInt(extOnOffSigTrigTimeToggler.currentString, 10);
                     }
                 }
 
@@ -161,7 +166,7 @@ Rectangle {
                 CCToggleButton {
                     id: onOffSigActionToggler
 
-                    currentString: powerConfigHandler.onOffSigAction;
+                    currentString: powerHandler ? powerHandler.onOffSigAction : "";
 
                     width: 300
                     height: 50
@@ -169,7 +174,8 @@ Rectangle {
                     elements: ["NO ACTION", "SUSPEND", "SHUTDOWN"]
 
                     onClicked: {
-                        powerConfigHandler.onOffSigAction = onOffSigActionToggler.currentString;
+                        if (powerHandler)
+                            powerHandler.onOffSigAction = onOffSigActionToggler.currentString;
                     }
                 }
             }
@@ -192,7 +198,7 @@ Rectangle {
                 CCToggleButton {
                     id: suspendMaxTimeToggler
 
-                    currentString: powerConfigHandler.suspendMaxTime;
+                    currentString: powerHandler ? powerHandler.suspendMaxTime : "";
 
                     width: 300
                     height: 50
@@ -200,7 +206,8 @@ Rectangle {
                     elements: ["1", "2", "5", "10"]
 
                     onClicked: {
-                        powerConfigHandler.suspendMaxTime = parseInt(suspendMaxTimeToggler.currentString, 10);
+                        if (powerHandler)
+                            powerHandler.suspendMaxTime = parseInt(suspendMaxTimeToggler.currentString, 10);
                     }
                 }
 
@@ -218,7 +225,7 @@ Rectangle {
         }
 
         StatusFieldControl {
-            statusText: frontLedHandler.lastError
+            statusText: powerHandler ? powerHandler.lastError : "Unavailable"
         }
     }
 }

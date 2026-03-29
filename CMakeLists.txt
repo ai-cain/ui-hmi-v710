@@ -1,10 +1,14 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(DEMO3 VERSION 0.1 LANGUAGES CXX)
+project(UiHmiV710 VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+if (MSVC)
+    add_compile_options(/FS)
+endif()
 
 find_package(Qt6 6.4 COMPONENTS Quick Core REQUIRED)
 #find_package(Qt6 REQUIRED COMPONENTS VirtualKeyboard)
@@ -20,13 +24,13 @@ endif()
 # Añadir recursos
 qt_add_resources(RESOURCES qml.qrc)
 
-qt_add_executable(appDEMO3
+qt_add_executable(appUiHmiV710
     main.cpp
     ${RESOURCES} #necesario para el qrc
 )
 
-qt_add_qml_module(appDEMO3
-    URI DEMO3
+qt_add_qml_module(appUiHmiV710
+    URI UiHmiV710
     VERSION 1.0
 
     QML_FILES
@@ -77,14 +81,14 @@ qt_add_qml_module(appDEMO3
     #js/Suma.js
 
     #-- keyboard --
-    SOURCES keyboard/keyEmitter.h
-    QML_FILES keyboard/Keyboard.qml
-    QML_FILES keyboard/KeyboardController.qml
-    QML_FILES keyboard/CustomButtonKeyboard.qml
+    SOURCES legacy/keyboard/keyEmitter.h
+    QML_FILES legacy/keyboard/Keyboard.qml
+    QML_FILES legacy/keyboard/KeyboardController.qml
+    QML_FILES legacy/keyboard/CustomButtonKeyboard.qml
     # -- clock --
-    SOURCES clock/Clock.h
-    SOURCES clock/Clock.cpp
-    QML_FILES clock/MTKDateTime.qml
+    SOURCES legacy/clock/Clock.h
+    SOURCES legacy/clock/Clock.cpp
+    QML_FILES legacy/clock/MTKDateTime.qml
 
     RESOURCES
     graphics/logo.png
@@ -116,36 +120,36 @@ qt_add_qml_module(appDEMO3
     graphics/under-construction.png
 )
 
-target_link_libraries(appDEMO3
+target_link_libraries(appUiHmiV710
     PRIVATE
     Qt6::Quick
     Qt6::Qml
     #Qt6::VirtualKeyboard
 )
 
-target_include_directories(appDEMO3 PRIVATE /opt/crosscontrol/include)
+target_include_directories(appUiHmiV710 PRIVATE /opt/crosscontrol/include)
 
 if (CMAKE_SYSTEM_PROCESSOR STREQUAL aarch64)    
     message("Include CCAux for iMX8")
-    target_compile_definitions(appDEMO3 PRIVATE CCAUX)
-    target_link_libraries(appDEMO3 PRIVATE cc-aux2)
+    target_compile_definitions(appUiHmiV710 PRIVATE CCAUX)
+    target_link_libraries(appUiHmiV710 PRIVATE cc-aux2)
     
     message("Include Sapcore for iMX8")
-    target_link_directories(appDEMO3 PUBLIC /opt/crosscontrol/arm/imx8/lib)
-    target_link_libraries(appDEMO3 PRIVATE sapcore)
+    target_link_directories(appUiHmiV710 PUBLIC /opt/crosscontrol/arm/imx8/lib)
+    target_link_libraries(appUiHmiV710 PRIVATE sapcore)
 
-    set(TARGET_INSTALL_DIR "/opt/appDEMO3/${CMAKE_INSTALL_BINDIR}")
+    set(TARGET_INSTALL_DIR "/opt/appUiHmiV710/${CMAKE_INSTALL_BINDIR}")
 endif()
 
 if (CMAKE_SYSTEM_PROCESSOR STREQUAL x86_64)
     message("Include Sapcore for VM")
-    target_link_directories(appDEMO3 PUBLIC /opt/crosscontrol/x86_64/vm/lib)
-    target_link_libraries(appDEMO3 PRIVATE sapcore)
+    target_link_directories(appUiHmiV710 PUBLIC /opt/crosscontrol/x86_64/vm/lib)
+    target_link_libraries(appUiHmiV710 PRIVATE sapcore)
 
     set(TARGET_INSTALL_DIR ".")
 endif()
 
-install(TARGETS appDEMO3
+install(TARGETS appUiHmiV710
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${TARGET_INSTALL_DIR}

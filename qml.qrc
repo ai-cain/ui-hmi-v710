@@ -57,6 +57,6 @@
         <file>pages/MTKOrientation.qml</file>
         <file>components/DateTimeDialog.qml</file>
         <file>graphics/camera-outline.svg</file>
-        <file>clock/MTKDateTime.qml</file>
+        <file>legacy/clock/MTKDateTime.qml</file>
     </qresource>
 </RCC>

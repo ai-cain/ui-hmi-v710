@@ -10,23 +10,28 @@ import "./../components"
 
 Rectangle {
     id: backlightID
+    property var lightHandler: (typeof backLightHandler !== "undefined" && backLightHandler !== null) ? backLightHandler : null
+    property var backendRef: (typeof backEnd !== "undefined" && backEnd !== null) ? backEnd : null
     radius: 10
     color: "#f4f4f4"//"#e9e9e9"
 
 
     function incrementBacklight()
     {
-        backLightHandler.increaseBacklight();
+        if (lightHandler)
+            lightHandler.increaseBacklight();
     }
 
     function decrementBacklight()
     {
-        backLightHandler.decreaseBacklight();
+        if (lightHandler)
+            lightHandler.decreaseBacklight();
     }
 
     function goBackToMain() {
         // View default page
-        backEnd.setState(MyAppState.MAIN)
+        if (backendRef)
+            backendRef.setState(MyAppState.MAIN)
         backlightPage.visible = false
         navigationBar.hideEnter = false
     }
@@ -34,7 +39,12 @@ Rectangle {
     function getLightSensorSymbol()
     {
         var symbol = ""
-        var percentageOfMax = backLightHandler.currentLightSensorValue / backLightHandler.maxLightSensorValue;
+        if (!lightHandler || lightHandler.maxLightSensorValue <= 0)
+        {
+            return "";
+        }
+
+        var percentageOfMax = lightHandler.currentLightSensorValue / lightHandler.maxLightSensorValue;
 
         if (percentageOfMax < 0.01)
         {
@@ -113,14 +123,15 @@ Rectangle {
             CCSlider {
                 minValue: 10
                 maxValue: 255
-                value: backLightHandler.currentBacklightValue
+                value: lightHandler ? lightHandler.currentBacklightValue : minValue
                 height: 50
                 width: 160
 
                 anchors.verticalCenter: parent.verticalCenter
 
-                onCurrentValueChanged: {
-                    backLightHandler.currentBacklightValue = newValue;
+                onCurrentValueChanged: function(newValue) {
+                    if (lightHandler)
+                        lightHandler.currentBacklightValue = newValue;
                 }
             }
 
@@ -146,7 +157,7 @@ Rectangle {
                 topMargin: backlightView.height / 46
             }
 
-            visible: backLightHandler.hasLightSensor
+            visible: lightHandler ? lightHandler.hasLightSensor : false
 
             Text {
                 id: lightSensorText
@@ -180,9 +191,9 @@ Rectangle {
                 }
 
                 Connections {
-                    target: backLightHandler
+                    target: lightHandler
 
-                    onCurrentLightSensorValueChanged: {
+                    function onCurrentLightSensorValueChanged() {
                         lightSensorValueText.text = getLightSensorSymbol();
                     }
                 }
@@ -194,7 +205,7 @@ Rectangle {
 
                     color: colordef_ccOrange
 
-                    text: backLightHandler.currentLightSensorValue;
+                    text: lightHandler ? lightHandler.currentLightSensorValue : "-";
 
                     anchors {
                         centerIn: parent
@@ -206,6 +217,6 @@ Rectangle {
     }
 
     StatusFieldControl {
-        statusText: backLightHandler.lastError
+        statusText: lightHandler ? lightHandler.lastError : "Unavailable"
     }
 }

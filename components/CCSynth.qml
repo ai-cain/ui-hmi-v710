@@ -8,6 +8,7 @@ import "../components"
 
 Rectangle {
     id: base
+    property var buzzerRef: (typeof buzzerHandler !== "undefined" && buzzerHandler !== null) ? buzzerHandler : null
 
     property int controlPanelHeight: 90
 
@@ -117,12 +118,13 @@ Rectangle {
                 maxValue: 100
                 valueTextColor: "white"
 
-                value: buzzerHandler.volume
+                value: buzzerRef ? buzzerRef.volume : minValue
                 height: parent.height * 0.5
                 width: (parent.width - synthName.width - textVolume.width - textToneLength.width - controlsRow.spacing * 4 - 44 - checkBoxBlocking.width) / 2
 
-                onCurrentValueChanged: {
-                    buzzerHandler.volume = newValue;
+                onCurrentValueChanged: function(newValue) {
+                    if (buzzerRef)
+                        buzzerRef.volume = newValue;
                 }
             }
 
@@ -153,12 +155,13 @@ Rectangle {
                 maxValue: 2000 // 2 secs
                 valueTextColor: "white"
 
-                value: buzzerHandler.toneLength
+                value: buzzerRef ? buzzerRef.toneLength : minValue
                 height: parent.height * 0.5
                 width: (parent.width - synthName.width - textVolume.width - textToneLength.width - controlsRow.spacing * 4 - 44 - checkBoxBlocking.width) / 2
 
-                onCurrentValueChanged: {
-                    buzzerHandler.toneLength = newValue;
+                onCurrentValueChanged: function(newValue) {
+                    if (buzzerRef)
+                        buzzerRef.toneLength = newValue;
                 }
             }
 
@@ -168,7 +171,7 @@ Rectangle {
 
                 anchors.verticalCenter: parent.verticalCenter
 
-                onClicked: buzzerHandler.blockingMode = checkBoxBlocking.checked
+                onClicked: if (buzzerRef) buzzerRef.blockingMode = checkBoxBlocking.checked
 
                 text: "BLOCKING:"
             }

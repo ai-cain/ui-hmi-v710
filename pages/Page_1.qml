@@ -1,10 +1,11 @@
 import QtQuick
 import "./../components"
-import "./../keyboard"
+import "./../legacy/keyboard"
 Rectangle {
     id: bottomPanel
+    property var backendRef: (typeof backEnd !== "undefined" && backEnd !== null) ? backEnd : null
 
-    anchors.fill: stackItem.parent
+    anchors.fill: parent
     radius: radiusBox
     color: "#efefee"
     MouseArea{
@@ -28,7 +29,7 @@ Rectangle {
 
         color: colordef_ccLightGray
 
-        text: backEnd.currentConfig.name
+        text: backendRef && backendRef.currentConfig ? backendRef.currentConfig.name : "No device info"
     }
 
     CCLogo {

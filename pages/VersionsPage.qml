@@ -10,12 +10,15 @@ import "../components"
 
 Rectangle {
     id: versionsID
+    property var versionRef: (typeof versionHandler !== "undefined" && versionHandler !== null) ? versionHandler : null
+    property var backendRef: (typeof backEnd !== "undefined" && backEnd !== null) ? backEnd : null
 
     color: "white"
 
     function goBackToMain() {
         // View default page
-        backEnd.setState(MyAppState.MAIN)
+        if (backendRef)
+            backendRef.setState(MyAppState.MAIN)
         versionsPage.visible = false
         navigationBar.hideEnter = false
     }
@@ -103,7 +106,7 @@ Rectangle {
                 }
             }
 
-            model: versionHandler.versionItems
+            model: versionRef ? versionRef.versionItems : []
         }
     }
 }

@@ -10,12 +10,16 @@ import "../components"
 
 Rectangle {
     id: buzzerID
+    property var buzzerRef: (typeof buzzerHandler !== "undefined" && buzzerHandler !== null) ? buzzerHandler : null
+    property var backendRef: (typeof backEnd !== "undefined" && backEnd !== null) ? backEnd : null
     radius: 10
     color: "#e9e9e9"
 
     function hwButtonUpPressed()
     {
-        var vol = buzzerHandler.volume;
+        if (!buzzerRef)
+            return;
+        var vol = buzzerRef.volume;
 
         // Set volume to the nearest upper decade
         vol = vol / 10;
@@ -28,12 +32,14 @@ Rectangle {
             vol = 100;
         }
 
-        buzzerHandler.volume = vol;
+        buzzerRef.volume = vol;
     }
 
     function hwButtonDownPressed()
     {
-        var vol = buzzerHandler.volume;
+        if (!buzzerRef)
+            return;
+        var vol = buzzerRef.volume;
 
         // Set volume to the nearest lower decade
         vol /= 10;
@@ -51,20 +57,23 @@ Rectangle {
             vol = 10;
         }
 
-        buzzerHandler.volume = vol;
+        buzzerRef.volume = vol;
     }
 
     function hwButtonEnterPressed()
     {
-        buzzerHandler.toneLength = 100;
+        if (!buzzerRef)
+            return;
+        buzzerRef.toneLength = 100;
         // Play a random tone between 700 and 3700 Hz
         var rn = 700 + Math.random() * 3000;
-        buzzerHandler.playTone(rn);
+        buzzerRef.playTone(rn);
     }
 
     function goBackToMain() {
         // View default page
-        backEnd.setState(MyAppState.MAIN)
+        if (backendRef)
+            backendRef.setState(MyAppState.MAIN)
         buzzerPage.visible = false
         navigationBar.hideEnter = false
     }
@@ -225,13 +234,13 @@ Rectangle {
                 }
 
                 font.pixelSize: 48
-                text: buzzerHandler.frequency
+                text: buzzerRef ? buzzerRef.frequency : "-"
             }
         }
 
         StatusFieldControl {
             id: statusField
-            statusText: buzzerHandler.lastError
+            statusText: buzzerRef ? buzzerRef.lastError : "Unavailable"
         }
     }
 }
