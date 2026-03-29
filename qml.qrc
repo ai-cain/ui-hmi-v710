@@ -21,9 +21,7 @@
         <file>pages/MainMenuPage.qml</file>
         <file>pages/PowerPage.qml</file>
         <file>pages/VersionsPage.qml</file>
-        <file>js/Suma.js</file>
         <file>components/Mtk_Slider.qml</file>
-        <file>Mtk_SumJs.qml</file>
         <file>pages/P_OperacionesSlider.qml</file>
         <file>components/Mtk_Button.qml</file>
         <file>pages/template.qml</file>

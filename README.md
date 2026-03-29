@@ -22,7 +22,6 @@ C++, and CMake.
 - `components/`: shared QML UI building blocks.
 - `pages/`: top-level and feature pages used by the HMI.
 - `graphics/`: icons and image assets.
-- `js/`: small JavaScript helpers.
 - `others/`: experimental or auxiliary C++ code.
 - `legacy/clock/`: archived clock-related standalone/demo code.
 - `legacy/keyboard/`: archived keyboard-related standalone/demo code.
