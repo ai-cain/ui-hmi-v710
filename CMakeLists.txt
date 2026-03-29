@@ -98,8 +98,12 @@ qt_add_qml_module(appUiHmiV710
 
     graphics/alarm.svg
     graphics/alarm-white.svg
+    graphics/diagnostic.svg
+    graphics/diagnostic-white.svg
     graphics/home.svg
     graphics/home-white.svg
+    graphics/info.svg
+    graphics/info-white.svg
     graphics/navigation.svg
     graphics/navigation-white.svg
     graphics/settings.svg

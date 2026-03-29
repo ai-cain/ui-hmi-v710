@@ -26,8 +26,12 @@
         <file>pages/DiagnosticPage.qml</file>
         <file>graphics/alarm-white.svg</file>
         <file>graphics/alarm.svg</file>
+        <file>graphics/diagnostic-white.svg</file>
+        <file>graphics/diagnostic.svg</file>
         <file>graphics/home-white.svg</file>
         <file>graphics/home.svg</file>
+        <file>graphics/info-white.svg</file>
+        <file>graphics/info.svg</file>
         <file>graphics/navigation-white.svg</file>
         <file>graphics/navigation.svg</file>
         <file>graphics/settings-white.svg</file>

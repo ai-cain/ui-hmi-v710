@@ -67,8 +67,8 @@ ApplicationWindow {
             ListElement {
                 title: "Diagnostic"
                 page: "pages/DiagnosticPage.qml"
-                icon: "qrc:/graphics/alarm.svg"
-                activeIcon: "qrc:/graphics/alarm-white.svg"
+                icon: "qrc:/graphics/diagnostic.svg"
+                activeIcon: "qrc:/graphics/diagnostic-white.svg"
                 color: "#ffa117"
             }
             ListElement {
@@ -81,8 +81,8 @@ ApplicationWindow {
             ListElement {
                 title: "Info"
                 page: "pages/InfoPage.qml"
-                icon: "qrc:/graphics/home.svg"
-                activeIcon: "qrc:/graphics/home-white.svg"
+                icon: "qrc:/graphics/info.svg"
+                activeIcon: "qrc:/graphics/info-white.svg"
                 color: "#ffa117" //"#2196f3"
             }
         }
