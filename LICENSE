@@ -1,0 +1,31 @@
+UiHmiV710 Repository License Notice
+
+This repository does not currently publish a single repository-wide
+open-source license that applies to all files.
+
+The source tree contains mixed-origin material, including files with
+third-party or vendor copyright notices. The build can also link against
+vendor-provided libraries such as `cc-aux2`.
+
+Because of that, this `LICENSE` file must not be interpreted as a blanket
+license grant for every file in the repository.
+
+For the current licensing and redistribution notes, see:
+
+- `docs/LICENSES.md`
+- `docs/LEGAL.md`
+- `licenses/LGPL-2.1.txt`
+
+Practical guidance:
+
+- Treat `CCAux/` and `cc-aux2` as third-party/vendor materials unless exact
+  upstream provenance is confirmed.
+- If you distribute a build that includes an LGPL-covered `cc-aux2` library,
+  include the LGPL text from `licenses/LGPL-2.1.txt` and follow the release
+  checklist in `docs/LEGAL.md`.
+- Do not assume that the entire repository is LGPL only because one shipped
+  dependency may be LGPL-covered.
+
+If the repository is later relicensed or full provenance is confirmed for all
+mixed-origin files, this notice can be replaced with a conventional root
+license text.
