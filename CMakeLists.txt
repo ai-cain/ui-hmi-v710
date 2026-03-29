@@ -43,10 +43,8 @@ qt_add_qml_module(appUiHmiV710
     pages/Page_3.qml
     pages/Page_4.qml
     pages/Page_5.qml
-    pages/Page_6.qml
     pages/Page_7.qml
     pages/PowerPage.qml
-    pages/P_OperacionesSlider.qml
     pages/DateTimePage.qml
 
     pages/MTKTouch.qml
@@ -58,14 +56,6 @@ qt_add_qml_module(appUiHmiV710
     components/CCIPAddressText.qml
 
     components/CCLogo.qml
-    #components/NavigationBar.qml
-    #components/ButtonTempl.qml
-    #components/Controller.qml
-
-    #pages/MainMenuPage.qml
-    #pages/ListData.qml
-    #pages/ListItem.qml
-    #pages/ListItem.qml
     pages/VersionsPage.qml
     pages/FrontLedPage.qml
     pages/BuzzerPage.qml
@@ -93,8 +83,6 @@ qt_add_qml_module(appUiHmiV710
     RESOURCES
     graphics/logo.png
     SOURCES
-    others/operacion.h              others/operacion.cpp
-    others/suma.h                   others/suma.cpp
     backend/backend.h               backend/backend.cpp
     backend/displayConfigHandler.h  backend/displayConfigHandler.cpp
     backend/hwbutton.h              backend/hwbutton.cpp

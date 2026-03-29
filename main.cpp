@@ -30,8 +30,6 @@
 #include "CCAux/VersionHandler.h"
 #include "backend/appstate.h"
 #include "backend/backend.h"
-#include "others/operacion.h"
-#include "others/suma.h"
 #include "legacy/clock/Clock.h"
 
 #include "legacy/keyboard/keyEmitter.h"
@@ -56,9 +54,6 @@ int main(int argc, char *argv[])
     // Set la propiedad
     engine.rootContext()->setContextProperty("clock", &clock);
     engine.rootContext()->setContextProperty("keyEmitter", &keyEmitter);
-
-    qmlRegisterType<suma>("libSuma", 1, 0, "Suma");
-    qmlRegisterType<Operacion>("libOperacion", 1, 0, "Operacion");
 
     FrontLedHandler frontLedHandler;
     frontLedHandler.init();
