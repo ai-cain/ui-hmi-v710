@@ -60,25 +60,29 @@ ApplicationWindow {
             ListElement {
                 title: "Setup"
                 page: "pages/SetupPage.qml"
-                source: "qrc:/graphics/camera-outline.svg"//"https://unpkg.com/ionicons@5.5.2/dist/svg/home-outline.svg"
+                icon: "qrc:/graphics/settings.svg"
+                activeIcon: "qrc:/graphics/settings-white.svg"
                 color: "#ffa117" //"#f44336"
             }
             ListElement {
                 title: "Diagnostic"
                 page: "pages/DiagnosticPage.qml"
-                source: "qrc:/graphics/camera-outline.svg"//"https://unpkg.com/ionicons@5.5.2/dist/svg/person-outline.svg"
+                icon: "qrc:/graphics/alarm.svg"
+                activeIcon: "qrc:/graphics/alarm-white.svg"
                 color: "#ffa117"
             }
             ListElement {
                 title: "Connection"
                 page: "pages/ConnectionPage.qml"
-                source: "qrc:/graphics/camera-outline.svg"
+                icon: "qrc:/graphics/navigation.svg"
+                activeIcon: "qrc:/graphics/navigation-white.svg"
                 color: "#ffa117" //"#0fc70f"
             }
             ListElement {
                 title: "Info"
                 page: "pages/InfoPage.qml"
-                source: "qrc:/graphics/camera-outline.svg"//"https://unpkg.com/ionicons@5.5.2/dist/svg/settings-outline.svg"
+                icon: "qrc:/graphics/home.svg"
+                activeIcon: "qrc:/graphics/home-white.svg"
                 color: "#ffa117" //"#2196f3"
             }
         }
@@ -338,7 +342,7 @@ ApplicationWindow {
                                     id: images
                                     anchors.centerIn: parent
                                     width: parent.width / 2
-                                    source: model.index === numberPage ? "qrc:/graphics/alarm-white.svg" : model.source
+                                    source: model.index === numberPage ? model.activeIcon : model.icon
                                     fillMode: Image.PreserveAspectFit
                                     z: stackView.z + 50
                                 }
