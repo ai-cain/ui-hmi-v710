@@ -50,7 +50,7 @@ Rectangle {
                     color: "#f7f3ea"
                     font.pixelSize: 12
                     font.bold: true
-                    letterSpacing: 1.2
+                    font.letterSpacing: 1.2
                 }
             }
 

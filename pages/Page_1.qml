@@ -5,7 +5,8 @@ Rectangle {
     id: bottomPanel
     property var backendRef: (typeof backEnd !== "undefined" && backEnd !== null) ? backEnd : null
 
-    anchors.fill: parent
+    width: parent ? parent.width : 0
+    height: parent ? parent.height : 0
     radius: radiusBox
     color: "#efefee"
     MouseArea{

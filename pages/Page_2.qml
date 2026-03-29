@@ -6,7 +6,8 @@ import "./../pages"
 
 
 Rectangle {
-    anchors.fill: parent
+    width: parent ? parent.width : 0
+    height: parent ? parent.height : 0
     radius: radiusBox
     color: "#ececec"
 
