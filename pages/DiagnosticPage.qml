@@ -13,19 +13,19 @@ Rectangle {
     ListModel {
         id: pageSubModel
         ListElement {
-            fileName: "Page_7.qml" //"BuzzerPage.qml"
+            fileName: "UnderConstructionPage.qml" //"BuzzerPage.qml"
             displayName: "Buzzer"
         }
         ListElement {
-            fileName: "Page_7.qml"
+            fileName: "UnderConstructionPage.qml"
             displayName: "CAN"
         }
         ListElement {
-            fileName: "Page_7.qml"
+            fileName: "UnderConstructionPage.qml"
             displayName: "Camera"
         }
         ListElement {
-            fileName: "Page_7.qml"
+            fileName: "UnderConstructionPage.qml"
             displayName: "Keyboard"
         }
     }

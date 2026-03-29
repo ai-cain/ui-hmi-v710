@@ -38,12 +38,12 @@ qt_add_qml_module(appUiHmiV710
     components/StyledSlider.qml
     components/CapsuleButton.qml
 
-    pages/Page_1.qml
-    pages/Page_2.qml
-    pages/Page_3.qml
-    pages/Page_4.qml
-    pages/Page_5.qml
-    pages/Page_7.qml
+    pages/HomePage.qml
+    pages/SetupPage.qml
+    pages/DiagnosticPage.qml
+    pages/ConnectionPage.qml
+    pages/InfoPage.qml
+    pages/UnderConstructionPage.qml
     pages/PowerPage.qml
     pages/DateTimePage.qml
 

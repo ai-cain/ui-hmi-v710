@@ -178,7 +178,7 @@ This means the repo is now much closer to a single main application instead of a
 
 ## Known Limitations
 
-- Some pages still use generic names such as `Page_1.qml`, `Page_2.qml`, etc.
+- Some section pages can still be grouped into subfolders for an even cleaner structure.
 - Some handlers are tightly coupled to real hardware/runtime availability.
 - A desktop run is useful for UI work, but not a full replacement for testing on the target device.
 

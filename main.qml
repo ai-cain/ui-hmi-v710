@@ -59,25 +59,25 @@ ApplicationWindow {
             id: itemModel
             ListElement {
                 title: "Setup"
-                page: "pages/Page_2.qml"
+                page: "pages/SetupPage.qml"
                 source: "qrc:/graphics/camera-outline.svg"//"https://unpkg.com/ionicons@5.5.2/dist/svg/home-outline.svg"
                 color: "#ffa117" //"#f44336"
             }
             ListElement {
                 title: "Diagnostic"
-                page: "pages/Page_3.qml"
+                page: "pages/DiagnosticPage.qml"
                 source: "qrc:/graphics/camera-outline.svg"//"https://unpkg.com/ionicons@5.5.2/dist/svg/person-outline.svg"
                 color: "#ffa117"
             }
             ListElement {
                 title: "Connection"
-                page: "pages/Page_4.qml"
+                page: "pages/ConnectionPage.qml"
                 source: "qrc:/graphics/camera-outline.svg"
                 color: "#ffa117" //"#0fc70f"
             }
             ListElement {
                 title: "Info"
-                page: "pages/Page_5.qml"
+                page: "pages/InfoPage.qml"
                 source: "qrc:/graphics/camera-outline.svg"//"https://unpkg.com/ionicons@5.5.2/dist/svg/settings-outline.svg"
                 color: "#ffa117" //"#2196f3"
             }
@@ -108,7 +108,7 @@ ApplicationWindow {
                         numberPage = 0
                         stackView.replace(Qt.resolvedUrl(currentPage))
                     } else {
-                        stackView.replace(Qt.resolvedUrl("pages/Page_1.qml"))
+                        stackView.replace(Qt.resolvedUrl("pages/HomePage.qml"))
                     }
                 }
             }

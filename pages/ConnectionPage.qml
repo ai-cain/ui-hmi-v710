@@ -1,3 +1,4 @@
+
 import QtQuick
 import QtQuick.Controls
 
@@ -13,12 +14,20 @@ Rectangle {
     ListModel {
         id: pageSubModel
         ListElement {
-            fileName: "Page_7.qml"
-            displayName: "CCAux"
+            fileName: "UnderConstructionPage.qml"
+            displayName: "Wi-fi"
         }
         ListElement {
-            fileName: "VersionsPage.qml"
-            displayName: "Version"
+            fileName: "UnderConstructionPage.qml"
+            displayName: "Bluetooth"
+        }
+        ListElement {
+            fileName: "UnderConstructionPage.qml"
+            displayName: "IP"
+        }
+        ListElement {
+            fileName: "UnderConstructionPage.qml"
+            displayName: "USB"
         }
     }
     Item {
@@ -39,7 +48,7 @@ Rectangle {
 
             color: colordef_ccLightGray
 
-            text: "Device Info"
+            text: "Connection"
         }
     }
 
@@ -149,22 +158,3 @@ Rectangle {
         opacity: visible ? 1.0 : 0.0
         Behavior on opacity { NumberAnimation { easing.type: Easing.InOutQuad; duration: 600 } }
     }*/
-
-
-/* VersionsPage
- {
-     id: versionsPage
-     anchors {
-         top: parent.top
-         left: parent.left
-         bottom: parent.bottom
-         bottomMargin: 4
-     }
-
-     width: parent.width  //navigationBar.isShowing ? parent.width - navigationBar.width : parent.width
-
-     visible: true//false
-
-     opacity: visible ? 1.0 : 0.0
-     Behavior on opacity { NumberAnimation { easing.type: Easing.InOutQuad; duration: 600 } }
- }*/

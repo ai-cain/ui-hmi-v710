@@ -19,11 +19,11 @@
         <file>components/CCToggleButton.qml</file>
         <file>components/PageHeaderControl.qml</file>
         <file>components/StatusFieldControl.qml</file>
-        <file>pages/Page_5.qml</file>
-        <file>pages/Page_4.qml</file>
-        <file>pages/Page_1.qml</file>
-        <file>pages/Page_2.qml</file>
-        <file>pages/Page_3.qml</file>
+        <file>pages/InfoPage.qml</file>
+        <file>pages/ConnectionPage.qml</file>
+        <file>pages/HomePage.qml</file>
+        <file>pages/SetupPage.qml</file>
+        <file>pages/DiagnosticPage.qml</file>
         <file>graphics/alarm-white.svg</file>
         <file>graphics/alarm.svg</file>
         <file>graphics/home-white.svg</file>
@@ -38,5 +38,6 @@
         <file>pages/OrientationPage.qml</file>
         <file>components/DateTimeDialog.qml</file>
         <file>graphics/camera-outline.svg</file>
+        <file>pages/UnderConstructionPage.qml</file>
     </qresource>
 </RCC>
