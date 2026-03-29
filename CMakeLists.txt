@@ -71,14 +71,14 @@ qt_add_qml_module(appUiHmiV710
     components/DateTimeDialog.qml
     #js/Suma.js
 
-    #-- keyboard --
-    SOURCES legacy/keyboard/keyEmitter.h
-    QML_FILES legacy/keyboard/Keyboard.qml
-    QML_FILES legacy/keyboard/KeyboardController.qml
-    QML_FILES legacy/keyboard/CustomButtonKeyboard.qml
-    # -- clock --
-    SOURCES legacy/clock/Clock.h
-    SOURCES legacy/clock/Clock.cpp
+    # Keyboard
+    SOURCES backend/KeyEmitter.h
+    QML_FILES components/keyboard/Keyboard.qml
+    QML_FILES components/keyboard/KeyboardController.qml
+    QML_FILES components/keyboard/KeyboardKey.qml
+    # Clock
+    SOURCES backend/Clock.h
+    SOURCES backend/Clock.cpp
 
     RESOURCES
     graphics/logo.png

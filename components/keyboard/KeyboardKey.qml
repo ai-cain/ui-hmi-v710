@@ -1,4 +1,4 @@
-//this archived is customButtonKeyboard.qml
+// Key used by the on-screen keyboard
 import QtQuick
 import QtQuick.Controls
 

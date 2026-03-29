@@ -1,4 +1,4 @@
-//this archived is keyboardController.qml
+// On-screen keyboard controller
 import QtQuick
 
 Item {

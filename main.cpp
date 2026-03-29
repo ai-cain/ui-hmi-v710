@@ -30,9 +30,8 @@
 #include "CCAux/VersionHandler.h"
 #include "backend/appstate.h"
 #include "backend/backend.h"
-#include "legacy/clock/Clock.h"
-
-#include "legacy/keyboard/keyEmitter.h"
+#include "backend/Clock.h"
+#include "backend/KeyEmitter.h"
 
 /******************************************************************************
  * The Main.

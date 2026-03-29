@@ -1,4 +1,4 @@
-/// keyboard.qml
+// On-screen keyboard
 import QtQuick
 
 Rectangle {
@@ -242,7 +242,7 @@ Rectangle {
                 spacing: rowSpacing
                 Repeater {
                     model: modelKeyboard["row_1"]
-                    delegate: CustomButtonKeyboard {
+                    delegate: KeyboardKey {
                         text: symbols ? modelData.symbol : shift ? modelData.text.toUpperCase() : modelData.text
                         buttonWidth: modelData.width * keyboard_container.width / columns - rowSpacing
                         buttonHeight: keyboard_container.height / rows - columnSpacing
@@ -257,7 +257,7 @@ Rectangle {
                 spacing: rowSpacing
                 Repeater {
                     model: modelKeyboard["row_2"]
-                    delegate: CustomButtonKeyboard {
+                    delegate: KeyboardKey {
                         text: symbols ? modelData.symbol : shift ? modelData.text.toUpperCase() : modelData.text
                         buttonWidth: modelData.width * keyboard_container.width / columns - rowSpacing
                         buttonHeight: keyboard_container.height / rows - columnSpacing
@@ -272,7 +272,7 @@ Rectangle {
                 spacing: rowSpacing
                 Repeater {
                     model: modelKeyboard["row_3"]
-                    delegate: CustomButtonKeyboard {
+                    delegate: KeyboardKey {
                         text: symbols ? modelData.symbol : shift ? modelData.text.toUpperCase() : modelData.text
                         buttonWidth: modelData.width * keyboard_container.width / columns - rowSpacing
                         buttonHeight: keyboard_container.height / rows - columnSpacing
@@ -288,7 +288,7 @@ Rectangle {
                 spacing: rowSpacing
                 Repeater {
                     model: modelKeyboard["row_4"]
-                    delegate: CustomButtonKeyboard {
+                    delegate: KeyboardKey {
                         text: symbols ? modelData.symbol : shift ? modelData.text.toUpperCase() : modelData.text
                         buttonWidth: modelData.width * keyboard_container.width / columns - rowSpacing
                         buttonHeight: keyboard_container.height / rows - columnSpacing
